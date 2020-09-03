@@ -27,123 +27,123 @@ anno = anno[!rownames(anno) %in% rp.genes_AmexG,]
 
 library(tidyverse)
 
-BL_5dpa_A <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER004/GER004_11dpa_limbBL_L001_Solo.out/Gene/raw/")
-BL_5dpa_A = BL_5dpa_A[rownames(anno), ,drop = FALSE]
+dpa18_FACSy_GER004 <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER004/GER004_11dpa_limbBL_L001_Solo.out/Gene/raw/")
+dpa18_FACSy_GER004 = dpa18_FACSy_GER004[rownames(anno), ,drop = FALSE]
 
-BL_5dpa_B <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER005/GER005_11dpa_limbBL_L002_Solo.out/Gene/raw/")
-BL_5dpa_B = BL_5dpa_B[rownames(anno), ,drop = FALSE]
+dpa18_FACSy_GER005 <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER005/GER005_11dpa_limbBL_L002_Solo.out/Gene/raw/")
+dpa18_FACSy_GER005 = dpa18_FACSy_GER005[rownames(anno), ,drop = FALSE]
 
-BL_5dpa_C <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER006/GER006_11dpa_limbBL_L001_Solo.out/Gene/raw/")
-BL_5dpa_C = BL_5dpa_C[rownames(anno), ,drop = FALSE]
+dpa00_FACSn_GER006 <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER006/GER006_11dpa_limbBL_L001_Solo.out/Gene/raw/")
+dpa00_FACSn_GER006 = dpa00_FACSn_GER006[rownames(anno), ,drop = FALSE]
 
-BL_5dpa_D <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER007/GER007_11dpa_limbBL_L002_Solo.out/Gene/raw/")
-BL_5dpa_D = BL_5dpa_D[rownames(anno), ,drop = FALSE]
+dpa00_FACSn_GER007 <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER007/GER007_11dpa_limbBL_L002_Solo.out/Gene/raw/")
+dpa00_FACSn_GER007 = dpa00_FACSn_GER007[rownames(anno), ,drop = FALSE]
 
-BL_5dpa_E <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER014/GER014_11dpa_limbBL_L007_Solo.out/Gene/raw/")
-BL_5dpa_E = BL_5dpa_E[rownames(anno), ,drop = FALSE]
+dpa00_FACSy_GER014 <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER014/GER014_11dpa_limbBL_L007_Solo.out/Gene/raw/")
+dpa00_FACSy_GER014 = dpa00_FACSy_GER014[rownames(anno), ,drop = FALSE]
 
-BL_5dpa_F <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER015/GER015_11dpa_limbBL_L008_Solo.out/Gene/raw/")
-BL_5dpa_F = BL_5dpa_F[rownames(anno), ,drop = FALSE]
+dpa00_FACSy_GER015 <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER015/GER015_11dpa_limbBL_L008_Solo.out/Gene/raw/")
+dpa00_FACSy_GER015 = dpa00_FACSy_GER015[rownames(anno), ,drop = FALSE]
 
-BL_5dpa_G <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER017/GER017_11dpa_limbBL_L001_Solo.out/Gene/raw/")
-BL_5dpa_G = BL_5dpa_G[rownames(anno), ,drop = FALSE]
+dpa18_FACSy_GER017 <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER017/GER017_11dpa_limbBL_L001_Solo.out/Gene/raw/")
+dpa18_FACSy_GER017 = dpa18_FACSy_GER017[rownames(anno), ,drop = FALSE]
 
-BL_5dpa_H <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER018/GER018_11dpa_limbBL_L002_Solo.out/Gene/raw/")
-BL_5dpa_H = BL_5dpa_H[rownames(anno), ,drop = FALSE]
+dpa18_FACSy_GER018 <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER018/GER018_11dpa_limbBL_L002_Solo.out/Gene/raw/")
+dpa18_FACSy_GER018 = dpa18_FACSy_GER018[rownames(anno), ,drop = FALSE]
 
-BL_5dpa_I1 <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER019/GER019_11dpa_limbBL_L001_Solo.out/Gene/raw/")
-BL_5dpa_I1 = BL_5dpa_I1[rownames(anno), ,drop = FALSE]
+dpa25_FACSy_GER019_l1 <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER019/GER019_11dpa_limbBL_L001_Solo.out/Gene/raw/")
+dpa25_FACSy_GER019_l1 = dpa25_FACSy_GER019_l1[rownames(anno), ,drop = FALSE]
 
-BL_5dpa_I2 <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER019/GER019_11dpa_limbBL_L002_Solo.out/Gene/raw/")
-BL_5dpa_I2 = BL_5dpa_I2[rownames(anno), ,drop = FALSE]
+dpa25_FACSy_GER019_l2 <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER019/GER019_11dpa_limbBL_L002_Solo.out/Gene/raw/")
+dpa25_FACSy_GER019_l2 = dpa25_FACSy_GER019_l2[rownames(anno), ,drop = FALSE]
 
-BL_5dpa_J1 <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER020/GER020_11dpa_limbBL_L001_Solo.out/Gene/raw/")
-BL_5dpa_J1 = BL_5dpa_J1[rownames(anno), ,drop = FALSE]
+dpa25_FACSy_GER020_l1 <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER020/GER020_11dpa_limbBL_L001_Solo.out/Gene/raw/")
+dpa25_FACSy_GER020_l1 = dpa25_FACSy_GER020_l1[rownames(anno), ,drop = FALSE]
 
-BL_5dpa_J2 <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER020/GER020_11dpa_limbBL_L002_Solo.out/Gene/raw/")
-BL_5dpa_J2 = BL_5dpa_J2[rownames(anno), ,drop = FALSE]
+dpa25_FACSy_GER020_l2 <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER020/GER020_11dpa_limbBL_L002_Solo.out/Gene/raw/")
+dpa25_FACSy_GER020_l2 = dpa25_FACSy_GER020_l2[rownames(anno), ,drop = FALSE]
 
-BL_5dpa_K <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER024/GER024_11dpa_limbBL_L001_Solo.out/Gene/raw/")
-BL_5dpa_K = BL_5dpa_K[rownames(anno), ,drop = FALSE]
+dpa38_FACSy_GER024 <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER024/GER024_11dpa_limbBL_L001_Solo.out/Gene/raw/")
+dpa38_FACSy_GER024 = dpa38_FACSy_GER024[rownames(anno), ,drop = FALSE]
 
-BL_5dpa_L1 <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER025/GER025_11dpa_limbBL_L001_Solo.out/Gene/raw/")
-BL_5dpa_L1 = BL_5dpa_L1[rownames(anno), ,drop = FALSE]
+dpa38_FACSy_GER025_l1 <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER025/GER025_11dpa_limbBL_L001_Solo.out/Gene/raw/")
+dpa38_FACSy_GER025_l1 = dpa38_FACSy_GER025_l1[rownames(anno), ,drop = FALSE]
 
-BL_5dpa_L2 <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER025/GER025_11dpa_limbBL_L002_Solo.out/Gene/raw/")
-BL_5dpa_L2 = BL_5dpa_L2[rownames(anno), ,drop = FALSE]
+dpa38_FACSy_GER025_l2 <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER025/GER025_11dpa_limbBL_L002_Solo.out/Gene/raw/")
+dpa38_FACSy_GER025_l2 = dpa38_FACSy_GER025_l2[rownames(anno), ,drop = FALSE]
 
-BL_5dpa_M <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER043/GER043_11dpa_limbBL_Solo.out/Gene/raw/")
-BL_5dpa_M = BL_5dpa_M[rownames(anno), ,drop = FALSE]
+dpa05_FACSn_GER043 <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER043/GER043_11dpa_limbBL_Solo.out/Gene/raw/")
+dpa05_FACSn_GER043 = dpa05_FACSn_GER043[rownames(anno), ,drop = FALSE]
 
-BL_5dpa_N <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER044/GER044_11dpa_limbBL_Solo.out/Gene/raw/")
-BL_5dpa_N = BL_5dpa_N[rownames(anno), ,drop = FALSE]
+dpa05_FACSy_GER044 <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER044/GER044_11dpa_limbBL_Solo.out/Gene/raw/")
+dpa05_FACSy_GER044 = dpa05_FACSy_GER044[rownames(anno), ,drop = FALSE]
 
-BL_5dpa_O <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER045/GER045_11dpa_limbBL_Solo.out/Gene/raw/")
-BL_5dpa_O = BL_5dpa_O[rownames(anno), ,drop = FALSE]
+dpa05_FACSn_GER045 <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER045/GER045_11dpa_limbBL_Solo.out/Gene/raw/")
+dpa05_FACSn_GER045 = dpa05_FACSn_GER045[rownames(anno), ,drop = FALSE]
 
-BL_5dpa_P <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER046/GER046_11dpa_limbBL_Solo.out/Gene/raw/")
-BL_5dpa_P = BL_5dpa_P[rownames(anno), ,drop = FALSE]
+dpa11_FACSy_GER046 <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER046/GER046_11dpa_limbBL_Solo.out/Gene/raw/")
+dpa11_FACSy_GER046 = dpa11_FACSy_GER046[rownames(anno), ,drop = FALSE]
 
-BL_5dpa_Q <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER047/GER047_11dpa_limbBL_Solo.out/Gene/raw/")
-BL_5dpa_Q = BL_5dpa_Q[rownames(anno), ,drop = FALSE]
+dpa11_FACSn_GER047 <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER047/GER047_11dpa_limbBL_Solo.out/Gene/raw/")
+dpa11_FACSn_GER047 = dpa11_FACSn_GER047[rownames(anno), ,drop = FALSE]
 
 library(dplyr)
 library(Seurat)
 
 #load in Seurat
 
-BL_5dpa_A <- CreateSeuratObject(counts = BL_5dpa_A, project = "BL_5dpa_A", min.cells = 3, min.features = 200)
-BL_5dpa_A
-BL_5dpa_B <- CreateSeuratObject(counts = BL_5dpa_B, project = "BL_5dpa_B", min.cells = 3, min.features = 200)
-BL_5dpa_B
-BL_5dpa_C <- CreateSeuratObject(counts = BL_5dpa_C, project = "BL_5dpa_C", min.cells = 3, min.features = 200)
-BL_5dpa_C
-BL_5dpa_D <- CreateSeuratObject(counts = BL_5dpa_D, project = "BL_5dpa_D", min.cells = 3, min.features = 200)
-BL_5dpa_D
-BL_5dpa_E <- CreateSeuratObject(counts = BL_5dpa_E, project = "BL_5dpa_E", min.cells = 3, min.features = 200)
-BL_5dpa_E
-BL_5dpa_F <- CreateSeuratObject(counts = BL_5dpa_F, project = "BL_5dpa_F", min.cells = 3, min.features = 200)
-BL_5dpa_F
-BL_5dpa_G <- CreateSeuratObject(counts = BL_5dpa_G, project = "BL_5dpa_G", min.cells = 3, min.features = 200)
-BL_5dpa_G
-BL_5dpa_H <- CreateSeuratObject(counts = BL_5dpa_H, project = "BL_5dpa_H", min.cells = 3, min.features = 200)
-BL_5dpa_H
-BL_5dpa_I1 <- CreateSeuratObject(counts = BL_5dpa_I1, project = "BL_5dpa_I1", min.cells = 3, min.features = 200)
-BL_5dpa_I1
-BL_5dpa_I2 <- CreateSeuratObject(counts = BL_5dpa_I2, project = "BL_5dpa_I2", min.cells = 3, min.features = 200)
-BL_5dpa_I2
-BL_5dpa_J1 <- CreateSeuratObject(counts = BL_5dpa_J1, project = "BL_5dpa_J1", min.cells = 3, min.features = 200)
-BL_5dpa_J1
-BL_5dpa_J2 <- CreateSeuratObject(counts = BL_5dpa_J2, project = "BL_5dpa_J2", min.cells = 3, min.features = 200)
-BL_5dpa_J2
-BL_5dpa_K <- CreateSeuratObject(counts = BL_5dpa_K, project = "BL_5dpa_K", min.cells = 3, min.features = 200)
-BL_5dpa_K
-BL_5dpa_L1 <- CreateSeuratObject(counts = BL_5dpa_L1, project = "BL_5dpa_L1", min.cells = 3, min.features = 200)
-BL_5dpa_L1
-BL_5dpa_L2 <- CreateSeuratObject(counts = BL_5dpa_L2, project = "BL_5dpa_L2", min.cells = 3, min.features = 200)
-BL_5dpa_L2
-BL_5dpa_M <- CreateSeuratObject(counts = BL_5dpa_M, project = "BL_5dpa_M", min.cells = 3, min.features = 200)
-BL_5dpa_M
-BL_5dpa_N <- CreateSeuratObject(counts = BL_5dpa_N, project = "BL_5dpa_N", min.cells = 3, min.features = 200)
-BL_5dpa_N
-BL_5dpa_O <- CreateSeuratObject(counts = BL_5dpa_O, project = "BL_5dpa_O", min.cells = 3, min.features = 200)
-BL_5dpa_O
-BL_5dpa_P <- CreateSeuratObject(counts = BL_5dpa_P, project = "BL_5dpa_P", min.cells = 3, min.features = 200)
-BL_5dpa_P
-BL_5dpa_Q <- CreateSeuratObject(counts = BL_5dpa_Q, project = "BL_5dpa_Q", min.cells = 3, min.features = 200)
-BL_5dpa_Q
+dpa18_FACSy_GER004 <- CreateSeuratObject(counts = dpa18_FACSy_GER004, project = "dpa18_FACSy_GER004", min.cells = 3, min.features = 200)
+dpa18_FACSy_GER004
+dpa18_FACSy_GER005 <- CreateSeuratObject(counts = dpa18_FACSy_GER005, project = "dpa18_FACSy_GER005", min.cells = 3, min.features = 200)
+dpa18_FACSy_GER005
+dpa00_FACSn_GER006 <- CreateSeuratObject(counts = dpa00_FACSn_GER006, project = "dpa00_FACSn_GER006", min.cells = 3, min.features = 200)
+dpa00_FACSn_GER006
+dpa00_FACSn_GER007 <- CreateSeuratObject(counts = dpa00_FACSn_GER007, project = "dpa00_FACSn_GER007", min.cells = 3, min.features = 200)
+dpa00_FACSn_GER007
+dpa00_FACSy_GER014 <- CreateSeuratObject(counts = dpa00_FACSy_GER014, project = "dpa00_FACSy_GER014", min.cells = 3, min.features = 200)
+dpa00_FACSy_GER014
+dpa00_FACSy_GER015 <- CreateSeuratObject(counts = dpa00_FACSy_GER015, project = "dpa00_FACSy_GER015", min.cells = 3, min.features = 200)
+dpa00_FACSy_GER015
+dpa18_FACSy_GER017 <- CreateSeuratObject(counts = dpa18_FACSy_GER017, project = "dpa18_FACSy_GER017", min.cells = 3, min.features = 200)
+dpa18_FACSy_GER017
+dpa18_FACSy_GER018 <- CreateSeuratObject(counts = dpa18_FACSy_GER018, project = "dpa18_FACSy_GER018", min.cells = 3, min.features = 200)
+dpa18_FACSy_GER018
+dpa25_FACSy_GER019_l1 <- CreateSeuratObject(counts = dpa25_FACSy_GER019_l1, project = "dpa25_FACSy_GER019_l1", min.cells = 3, min.features = 200)
+dpa25_FACSy_GER019_l1
+dpa25_FACSy_GER019_l2 <- CreateSeuratObject(counts = dpa25_FACSy_GER019_l2, project = "dpa25_FACSy_GER019_l2", min.cells = 3, min.features = 200)
+dpa25_FACSy_GER019_l2
+dpa25_FACSy_GER020_l1 <- CreateSeuratObject(counts = dpa25_FACSy_GER020_l1, project = "dpa25_FACSy_GER020_l1", min.cells = 3, min.features = 200)
+dpa25_FACSy_GER020_l1
+dpa25_FACSy_GER020_l2 <- CreateSeuratObject(counts = dpa25_FACSy_GER020_l2, project = "dpa25_FACSy_GER020_l2", min.cells = 3, min.features = 200)
+dpa25_FACSy_GER020_l2
+dpa38_FACSy_GER024 <- CreateSeuratObject(counts = dpa38_FACSy_GER024, project = "dpa38_FACSy_GER024", min.cells = 3, min.features = 200)
+dpa38_FACSy_GER024
+dpa38_FACSy_GER025_l1 <- CreateSeuratObject(counts = dpa38_FACSy_GER025_l1, project = "dpa38_FACSy_GER025_l1", min.cells = 3, min.features = 200)
+dpa38_FACSy_GER025_l1
+dpa38_FACSy_GER025_l2 <- CreateSeuratObject(counts = dpa38_FACSy_GER025_l2, project = "dpa38_FACSy_GER025_l2", min.cells = 3, min.features = 200)
+dpa38_FACSy_GER025_l2
+dpa05_FACSn_GER043 <- CreateSeuratObject(counts = dpa05_FACSn_GER043, project = "dpa05_FACSn_GER043", min.cells = 3, min.features = 200)
+dpa05_FACSn_GER043
+dpa05_FACSy_GER044 <- CreateSeuratObject(counts = dpa05_FACSy_GER044, project = "dpa05_FACSy_GER044", min.cells = 3, min.features = 200)
+dpa05_FACSy_GER044
+dpa05_FACSn_GER045 <- CreateSeuratObject(counts = dpa05_FACSn_GER045, project = "dpa05_FACSn_GER045", min.cells = 3, min.features = 200)
+dpa05_FACSn_GER045
+dpa11_FACSy_GER046 <- CreateSeuratObject(counts = dpa11_FACSy_GER046, project = "dpa11_FACSy_GER046", min.cells = 3, min.features = 200)
+dpa11_FACSy_GER046
+dpa11_FACSn_GER047 <- CreateSeuratObject(counts = dpa11_FACSn_GER047, project = "dpa11_FACSn_GER047", min.cells = 3, min.features = 200)
+dpa11_FACSn_GER047
 
 
 #merge ojects
 #merge(x = NULL, y = NULL, add.cell.ids = NULL, merge.data = TRUE, project = "SeuratProject", ...)
 
-BL_5dpa = merge(BL_5dpa_A, y = c(BL_5dpa_B, BL_5dpa_C, BL_5dpa_D, BL_5dpa_E, BL_5dpa_F, BL_5dpa_G, BL_5dpa_H, BL_5dpa_I1, BL_5dpa_I2, BL_5dpa_J1, BL_5dpa_J2, BL_5dpa_K, BL_5dpa_L1, BL_5dpa_L2, BL_5dpa_M, BL_5dpa_N, BL_5dpa_O, BL_5dpa_P, BL_5dpa_Q), add.cell.ids = c("A", "B", "C", "D", "E", "F", "G", "H", "I1", "I2", "J1", "J2", "K", "L1", "L2", "M", "N", "O", "P", "Q"), project = "Limb_BL_5dpa")
+BL_dpa = merge(dpa18_FACSy_GER004, y = c(dpa18_FACSy_GER005, dpa00_FACSn_GER006, dpa00_FACSn_GER007, dpa00_FACSy_GER014, dpa00_FACSy_GER015, dpa18_FACSy_GER017, dpa18_FACSy_GER018, dpa25_FACSy_GER019_l1, dpa25_FACSy_GER019_l2, dpa25_FACSy_GER020_l1, dpa25_FACSy_GER020_l2, dpa38_FACSy_GER024, dpa38_FACSy_GER025_l1, dpa38_FACSy_GER025_l2, dpa05_FACSn_GER043, dpa05_FACSy_GER044, dpa05_FACSn_GER045, dpa11_FACSy_GER046, dpa11_FACSn_GER047), add.cell.ids = c("GER004", "GER005", "GER006", "GER007", "GER014", "GER015", "GER017", "GER018", "GER019_l1", "GER019_l2", "GER020_l1", "GER020_l2", "GER024", "GER025_l1", "GER025_l2", "GER043", "GER044", "GER045", "GER046", "GER047"), project = "Limb_BL_dpa")
 
 mito.genes <- c("ND2","ND1","ND3","ND4","ND4L","ND5","ND6")
-mito.contig <- intersect(c(rownames(anno)[anno$V2 %in% mito.genes ] , rownames(anno)[anno$V2 %in% anno$V2[grep("^COX",anno$V2)]] ) , rownames(BL_5dpa))
+mito.contig <- intersect(c(rownames(anno)[anno$V2 %in% mito.genes ] , rownames(anno)[anno$V2 %in% anno$V2[grep("^COX",anno$V2)]] ) , rownames(BL_dpa))
 
 
-BL_5dpa[["percent.mt"]] <- PercentageFeatureSet(BL_5dpa, features = mito.contig)
+BL_dpa[["percent.mt"]] <- PercentageFeatureSet(BL_dpa, features = mito.contig)
 
 
 #parallize scaling
@@ -156,24 +156,24 @@ options(future.globals.maxSize = 50000 * 1024^2)
 
 #normalize data
 
-BL_5dpa = NormalizeData(BL_5dpa)
+BL_dpa = NormalizeData(BL_dpa)
 
-plot1 <- FeatureScatter(BL_5dpa, feature1 = "nCount_RNA", feature2 = "percent.mt")
-plot2 <- FeatureScatter(BL_5dpa, feature1 = "nCount_RNA", feature2 = "nFeature_RNA")
+plot1 <- FeatureScatter(BL_dpa, feature1 = "nCount_RNA", feature2 = "percent.mt")
+plot2 <- FeatureScatter(BL_dpa, feature1 = "nCount_RNA", feature2 = "nFeature_RNA")
 
 
-pdf("./BL_5dpa_QC_PreFilter.pdf",width=10,height=5)
-VlnPlot(BL_5dpa, features = c("nCount_RNA","nFeature_RNA","percent.mt"),pt.size = -1)
+pdf("./dpa11_FACSn_GER047C_PreFilter.pdf",width=10,height=5)
+VlnPlot(BL_dpa, features = c("nCount_RNA","nFeature_RNA","percent.mt"),pt.size = -1)
 CombinePlots(plots = list(plot1, plot2))
 dev.off()
 
-BL_5dpa <- subset(BL_5dpa, subset = nCount_RNA < 20000  & nCount_RNA > 500  & percent.mt < 10 )
+BL_dpa <- subset(BL_dpa, subset = nCount_RNA < 20000  & nCount_RNA > 500  & percent.mt < 10 )
 
-plot1 <- FeatureScatter(BL_5dpa, feature1 = "nCount_RNA", feature2 = "percent.mt")
-plot2 <- FeatureScatter(BL_5dpa, feature1 = "nCount_RNA", feature2 = "nFeature_RNA")
+plot1 <- FeatureScatter(BL_dpa, feature1 = "nCount_RNA", feature2 = "percent.mt")
+plot2 <- FeatureScatter(BL_dpa, feature1 = "nCount_RNA", feature2 = "nFeature_RNA")
 
-pdf("./BL_5dpa_QC_PostFilter.pdf",width=10,height=5)
-VlnPlot(BL_5dpa, features = c("nCount_RNA","nFeature_RNA","percent.mt"),pt.size = -1)
+pdf("./dpa11_FACSn_GER047C_PostFilter.pdf",width=10,height=5)
+VlnPlot(BL_dpa, features = c("nCount_RNA","nFeature_RNA","percent.mt"),pt.size = -1)
 CombinePlots(plots = list(plot1, plot2))
 dev.off()
 
@@ -181,79 +181,79 @@ dev.off()
 #get cell cycle genes
 
 g2m.genes <- cc.genes$g2m.genes
-g2m.contig <- intersect(rownames(anno)[anno$V2 %in% g2m.genes ] , rownames(BL_5dpa) )
+g2m.contig <- intersect(rownames(anno)[anno$V2 %in% g2m.genes ] , rownames(BL_dpa) )
 
 s.genes <- cc.genes$s.genes
-s.contig <- intersect(rownames(anno)[anno$V2 %in% s.genes ] , rownames(BL_5dpa) )
+s.contig <- intersect(rownames(anno)[anno$V2 %in% s.genes ] , rownames(BL_dpa) )
 
 #cell cycle scoring
-BL_5dpa <- CellCycleScoring(BL_5dpa, s.features = s.contig, g2m.features = g2m.contig, set.ident = TRUE)
+BL_dpa <- CellCycleScoring(BL_dpa, s.features = s.contig, g2m.features = g2m.contig, set.ident = TRUE)
 
 
 #scale
 #ScaleData(  object,  features = NULL,  assay = NULL,  vars.to.regress = NULL,  split.by = NULL,  model.use = "linear",  use.umi = FALSE,  do.scale = TRUE,  do.center = TRUE,  scale.max = 10,  block.size = 1000,  min.cells.to.block = 3000,  verbose = TRUE)
 
-all.genes <- rownames(BL_5dpa)
+all.genes <- rownames(BL_dpa)
 
-BL_5dpa = ScaleData(  BL_5dpa, features = all.genes ,vars.to.regress = c("nCount_RNA","nFeature_RNA","percent.mt","S.Score", "G2M.Score","eGFP","mCherry"))
+BL_dpa = ScaleData(  BL_dpa, features = all.genes ,vars.to.regress = c("nCount_RNA","nFeature_RNA","percent.mt","S.Score", "G2M.Score","eGFP","mCherry"))
 
 #run PCA on all genes
 #RunPCA(object, assay = NULL, features = NULL,  npcs = 50, rev.pca = FALSE, weight.by.var = TRUE, verbose = TRUE,  ndims.print = 1:5, nfeatures.print = 30, reduction.name = "pca",  reduction.key = "PC_", seed.use = 42)
 
-BL_5dpa = RunPCA(BL_5dpa,features = all.genes,npcs = 100)
+BL_dpa = RunPCA(BL_dpa,features = all.genes,npcs = 100)
 
 #plot PCA heatmaps
 #DimHeatmap(pbmc, dims = 1, cells = 500, balanced = TRUE)
 
 library(RColorBrewer)
 
-pdf("BL_5dpa_PCAheatmaps.pdf",width=30,height=20)
-DimHeatmap(BL_5dpa, dims = 1:16, cells = 1000, balanced = TRUE, ncol = 4,  fast = F) 
-DimHeatmap(BL_5dpa, dims = 17:32, cells = 1000, balanced = TRUE, ncol = 4,  fast = F) 
-DimHeatmap(BL_5dpa, dims = 33:48, cells = 1000, balanced = TRUE,  ncol = 4, fast = F) 
-DimHeatmap(BL_5dpa, dims = 49:64, cells = 1000, balanced = TRUE,  ncol = 4, fast = F) 
-DimHeatmap(BL_5dpa, dims = 65:80, cells = 1000, balanced = TRUE,  ncol = 4, fast = F) 
-DimHeatmap(BL_5dpa, dims = 81:96, cells = 1000, balanced = TRUE,  ncol = 4, fast = F) 
+pdf("dpa11_FACSy_GER046CAheatmaps.pdf",width=30,height=20)
+DimHeatmap(BL_dpa, dims = 1:16, cells = 1000, balanced = TRUE, ncol = 4,  fast = F) 
+DimHeatmap(BL_dpa, dims = 17:32, cells = 1000, balanced = TRUE, ncol = 4,  fast = F) 
+DimHeatmap(BL_dpa, dims = 33:48, cells = 1000, balanced = TRUE,  ncol = 4, fast = F) 
+DimHeatmap(BL_dpa, dims = 49:64, cells = 1000, balanced = TRUE,  ncol = 4, fast = F) 
+DimHeatmap(BL_dpa, dims = 65:80, cells = 1000, balanced = TRUE,  ncol = 4, fast = F) 
+DimHeatmap(BL_dpa, dims = 81:96, cells = 1000, balanced = TRUE,  ncol = 4, fast = F) 
 dev.off()
 
 #elbow plot
-pdf("BL_5dpa_PCelbow.pdf",width=20,height=10)
-ElbowPlot(BL_5dpa, ndims = 100)
+pdf("dpa11_FACSy_GER046Celbow.pdf",width=20,height=10)
+ElbowPlot(BL_dpa, ndims = 100)
 dev.off()
 
 #Cluster cells
-BL_5dpa<- FindNeighbors(BL_5dpa, dims = 1:30)
-BL_5dpa <- FindClusters(BL_5dpa, resolution = 0.5)
+BL_dpa<- FindNeighbors(BL_dpa, dims = 1:30)
+BL_dpa <- FindClusters(BL_dpa, resolution = 0.5)
 
 #run UMAP
 #min.dist deafult is 0.3. Can go down to 0.001. Play around to modify clustering
-BL_5dpa = RunUMAP(BL_5dpa,dims = 1:30)
+BL_dpa = RunUMAP(BL_dpa,dims = 1:30)
 
 #run tSNE
-BL_5dpa = RunTSNE(BL_5dpa,dims = 1:30)
+BL_dpa = RunTSNE(BL_dpa,dims = 1:30)
 
 
 #plot result
 #DimPlot(object, dims = c(1, 2), cells = NULL, cols = NULL,  pt.size = NULL, reduction = NULL, group.by = NULL,  split.by = NULL, shape.by = NULL, order = NULL, label = FALSE,  label.size = 4, repel = FALSE, cells.highlight = NULL,  cols.highlight = "red", sizes.highlight = 1, na.value = "grey50",  combine = TRUE)
 
-pdf("BL_5dpa_Embedding_PC30_res0.5.pdf",width=10,height=10)
-DimPlot(object = BL_5dpa, reduction = 'umap', pt.size = 2)
-DimPlot(object = BL_5dpa, reduction = 'umap', pt.size = 2,group.by = "orig.ident")
-DimPlot(object = BL_5dpa, reduction = 'tsne', pt.size = 2)
+pdf("dpa00_FACSy_GER014mbedding_PC30_res0.5.pdf",width=10,height=10)
+DimPlot(object = BL_dpa, reduction = 'umap', pt.size = 2)
+DimPlot(object = BL_dpa, reduction = 'umap', pt.size = 2,group.by = "orig.ident")
+DimPlot(object = BL_dpa, reduction = 'tsne', pt.size = 2)
 dev.off()
 
 #some QC features
 
-pdf("BL_5dpa_feature.pdf",width=8,height=10)
-FeaturePlot(BL_5dpa, reduction = 'umap', pt.size = 0.5, features = c("nFeature_RNA","nCount_RNA","percent.mt","mCherry","eGFP"),order = T, cols = c(brewer.pal(9,"Greys")[9:2],brewer.pal(9,"Reds")[2:9]))
-FeaturePlot(BL_5dpa, reduction = 'tsne', pt.size = 0.5, features = c("nFeature_RNA","nCount_RNA","percent.mt","mCherry","eGFP"),order = T, cols = c(brewer.pal(9,"Greys")[9:2],brewer.pal(9,"Reds")[2:9]))
+pdf("dpa00_FACSy_GER015eature.pdf",width=8,height=10)
+FeaturePlot(BL_dpa, reduction = 'umap', pt.size = 0.5, features = c("nFeature_RNA","nCount_RNA","percent.mt","mCherry","eGFP"),order = T, cols = c(brewer.pal(9,"Greys")[9:2],brewer.pal(9,"Reds")[2:9]))
+FeaturePlot(BL_dpa, reduction = 'tsne', pt.size = 0.5, features = c("nFeature_RNA","nCount_RNA","percent.mt","mCherry","eGFP"),order = T, cols = c(brewer.pal(9,"Greys")[9:2],brewer.pal(9,"Reds")[2:9]))
 dev.off()
 
 
 plan("multiprocess", workers = 6)
 library(tidyverse)
 
-markers <- FindAllMarkers(BL_5dpa, only.pos = TRUE,  logfc.threshold = 0.3)
+markers <- FindAllMarkers(BL_dpa, only.pos = TRUE,  logfc.threshold = 0.3)
 markers.anno = markers
 markers.anno = merge(markers.anno,anno, by.x="gene" , by.y="V1")
 markers.anno$ID = markers.anno$gene
@@ -261,9 +261,9 @@ markers.anno$ID = markers.anno$gene
 #markers.anno = markers.anno[order(as.numeric(markers.anno$cluster)),]
 markers.anno = markers.anno  %>% arrange(cluster , desc(avg_logFC))
 
-write.csv(markers.anno,"BL_5dpa_allMarker.csv")
+write.csv(markers.anno,"dpa18_FACSy_GER004llMarker.csv")
 
-saveRDS(BL_5dpa, file = "BL_5dpa_SeuratObj.RDS")
+saveRDS(BL_dpa, file = "BL_dpa_SeuratObj.RDS")
 
 
 #plot some canonical markers to roughly identfy cell types
@@ -273,10 +273,10 @@ gene_ids = c("AMEX60DD027986","AMEX60DD056342","AMEX60DD045921","AMEX60DD035908"
 
 gene_names = c("MYLPF","DES","S100P","EPCAM","COL1A2","PRRX1","MYH11","GP9","VWF","PLVAP","GZMA","PAX5","CTSW","C1QB","LGALS3BP","ALAS2","RHAG")
 
-gg_Fig <- FeaturePlot(BL_5dpa, pt.size = 0.5, features = gene_ids,order = T, cols = brewer.pal(9,"Greys")[3:9], repel=T)
+gg_Fig <- FeaturePlot(BL_dpa, pt.size = 0.5, features = gene_ids,order = T, cols = brewer.pal(9,"Greys")[3:9], repel=T)
 gg_Fig <- lapply( 1:length(gene_ids), function(x) { gg_Fig[[x]] + labs(title=gene_names[x]) })
 
-pdf("BL_5dpa_UMAP_feature_ClustMarker.pdf",width=14,height=10)
+pdf("BL_dpa_UMAP_feature_ClustMarker.pdf",width=14,height=10)
 CombinePlots( gg_Fig )
 dev.off()
 
