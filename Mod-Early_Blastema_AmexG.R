@@ -138,7 +138,6 @@ BL_5dpa_Q
 #merge(x = NULL, y = NULL, add.cell.ids = NULL, merge.data = TRUE, project = "SeuratProject", ...)
 
 BL_5dpa = merge(BL_5dpa_A, y = c(BL_5dpa_B, BL_5dpa_C, BL_5dpa_D, BL_5dpa_E, BL_5dpa_F, BL_5dpa_G, BL_5dpa_H, BL_5dpa_I1, BL_5dpa_I2, BL_5dpa_J1, BL_5dpa_J2, BL_5dpa_K, BL_5dpa_L1, BL_5dpa_L2, BL_5dpa_M, BL_5dpa_N, BL_5dpa_O, BL_5dpa_P, BL_5dpa_Q), add.cell.ids = c("A", "B", "C", "D", "E", "F", "G", "H", "I1", "I2", "J1", "J2", "K", "L1", "L2", "M", "N", "O", "P", "Q"), project = "Limb_BL_5dpa")
-#BL_5dpa = merge(BL_5dpa_M, y = c(BL_5dpa_N, BL_5dpa_O, BL_5dpa_P, BL_5dpa_Q), add.cell.ids = c("M", "N", "O", "P", "Q"), project = "Limb_BL_5dpa")
 
 mito.genes <- c("ND2","ND1","ND3","ND4","ND4L","ND5","ND6")
 mito.contig <- intersect(c(rownames(anno)[anno$V2 %in% mito.genes ] , rownames(anno)[anno$V2 %in% anno$V2[grep("^COX",anno$V2)]] ) , rownames(BL_5dpa))
