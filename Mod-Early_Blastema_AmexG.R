@@ -1,19 +1,14 @@
 #Load libraries
-
 library(Seurat)
 library(dplyr)
 library(Matrix)
 library(RColorBrewer)
 
 setwd("/compbio/analysis/PrayagMurawala/")
-
 # annotation file
-
-anno = read.delim("/compbio/analysis/PrayagMurawala/AnnotaFile_AmexG_v6_chr_unscaffolded_CherryGFP_v1.1.csv",sep = "\t",header = F)
+anno = read.delim("/compbio/analysis/PrayagMurawala/AnnotationFile_AmexG_v6_chr_unscaffolded_CherryGFP_v1.1.csv",sep = "\t",header = F)
 rownames(anno) = anno[,1]
 
-
-############# remove weird transposon / unannotated genes
 unannotated.transcripts = rownames(anno)[anno$V2 %in% anno$V2[grep("PEG10",anno$V2)] ]
 unannotated.transcripts = unique(c(rownames(anno)[anno$V2 %in% anno$V2[grep("L1TD1",anno$V2)] ], unannotated.transcripts))
 unannotated.transcripts = unique(c(rownames(anno)[anno$V2 %in% anno$V2[grep("RTL",anno$V2)] ], unannotated.transcripts))
@@ -25,17 +20,12 @@ unannotated.transcripts = unique(c(rownames(anno)[anno$V2 %in% anno$V2[grep("^AM
 anno = anno[!rownames(anno) %in% unannotated.transcripts,]
 
 
-############# remove rp genes
-
 rp.genes_AmexG = rownames(anno)[anno$V2 %in% anno$V2[grep("RPL",anno$V2)]]
 rp.genes_AmexG = unique(c(rownames(anno)[anno$V2 %in% anno$V2[grep("RPS",anno$V2)] ], rp.genes_AmexG))
 
 anno = anno[!rownames(anno) %in% rp.genes_AmexG,]
 
-
 library(tidyverse)
-
-############# get data and remove genes
 
 BL_5dpa_A <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER004/GER004_11dpa_limbBL_L001_Solo.out/Gene/raw/")
 BL_5dpa_A = BL_5dpa_A[rownames(anno), ,drop = FALSE]
@@ -61,32 +51,26 @@ BL_5dpa_G = BL_5dpa_G[rownames(anno), ,drop = FALSE]
 BL_5dpa_H <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER018/GER018_11dpa_limbBL_L002_Solo.out/Gene/raw/")
 BL_5dpa_H = BL_5dpa_H[rownames(anno), ,drop = FALSE]
 
-# 2 lane
 BL_5dpa_I1 <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER019/GER019_11dpa_limbBL_L001_Solo.out/Gene/raw/")
-BL_5dpa_I1 = BL_5dpa_I[rownames(anno), ,drop = FALSE]
+BL_5dpa_I1 = BL_5dpa_I1[rownames(anno), ,drop = FALSE]
 
 BL_5dpa_I2 <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER019/GER019_11dpa_limbBL_L002_Solo.out/Gene/raw/")
-BL_5dpa_I2 = BL_5dpa_I[rownames(anno), ,drop = FALSE]
-# break
+BL_5dpa_I2 = BL_5dpa_I2[rownames(anno), ,drop = FALSE]
 
-# 2 lane
 BL_5dpa_J1 <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER020/GER020_11dpa_limbBL_L001_Solo.out/Gene/raw/")
 BL_5dpa_J1 = BL_5dpa_J1[rownames(anno), ,drop = FALSE]
 
 BL_5dpa_J2 <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER020/GER020_11dpa_limbBL_L002_Solo.out/Gene/raw/")
 BL_5dpa_J2 = BL_5dpa_J2[rownames(anno), ,drop = FALSE]
-# break
 
 BL_5dpa_K <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER024/GER024_11dpa_limbBL_L001_Solo.out/Gene/raw/")
 BL_5dpa_K = BL_5dpa_K[rownames(anno), ,drop = FALSE]
 
-# 2 lane
 BL_5dpa_L1 <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER025/GER025_11dpa_limbBL_L001_Solo.out/Gene/raw/")
 BL_5dpa_L1 = BL_5dpa_L1[rownames(anno), ,drop = FALSE]
 
 BL_5dpa_L2 <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER025/GER025_11dpa_limbBL_L002_Solo.out/Gene/raw/")
 BL_5dpa_L2 = BL_5dpa_L2[rownames(anno), ,drop = FALSE]
-# break
 
 BL_5dpa_M <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER043/GER043_11dpa_limbBL_Solo.out/Gene/raw/")
 BL_5dpa_M = BL_5dpa_M[rownames(anno), ,drop = FALSE]
@@ -106,7 +90,7 @@ BL_5dpa_Q = BL_5dpa_Q[rownames(anno), ,drop = FALSE]
 library(dplyr)
 library(Seurat)
 
-############# load in Seurat
+#load in Seurat
 
 BL_5dpa_A <- CreateSeuratObject(counts = BL_5dpa_A, project = "BL_5dpa_A", min.cells = 3, min.features = 200)
 BL_5dpa_A
@@ -153,9 +137,8 @@ BL_5dpa_Q
 #merge ojects
 #merge(x = NULL, y = NULL, add.cell.ids = NULL, merge.data = TRUE, project = "SeuratProject", ...)
 
-BL_5dpa = merge(BL_5dpa_A, y = c(BL_5dpa_B, BL_5dpa_C, BL_5dpa_D, BL_5dpa_E, BL_5dpa_F, BL_5dpa_G, BL_5dpa_H, BL_5dpa_I1, BL_5dpa_I2, BL_5dpa_J1, BL_5dpa_J2, BL_5dpa_K, BL_5dpa_L1, BL_5dpa_L2, BL_5dpa_M, BL_5dpa_N, BL_5dpa_O, BL_5dpa_P, BL_5dpa_Q), add.cell.ids = c("A", "B", "C", "D", "E", "F", "G", "H", "I1", "I2" "J1", "J2", "K", "L1", "L2", "M", "N", "O", "P", "Q"), project = "Limb_BL_5dpa")
-
-#BL_5dpa = merge(BL_5dpa_A, y = c(BL_5dpa_B, BL_5dpa_C, BL_5dpa_D, BL_5dpa_E, BL_5dpa_F, BL_5dpa_G, BL_5dpa_H, BL_5dpa_I, BL_5dpa_J, BL_5dpa_K, BL_5dpa_L, BL_5dpa_M, BL_5dpa_N, BL_5dpa_O, BL_5dpa_P, BL_5dpa_Q), add.cell.ids = c("A", "B", "C", "D", "E"), project = "Limb_BL_5dpa")
+BL_5dpa = merge(BL_5dpa_A, y = c(BL_5dpa_B, BL_5dpa_C, BL_5dpa_D, BL_5dpa_E, BL_5dpa_F, BL_5dpa_G, BL_5dpa_H, BL_5dpa_I1, BL_5dpa_I2, BL_5dpa_J1, BL_5dpa_J2, BL_5dpa_K, BL_5dpa_L1, BL_5dpa_L2, BL_5dpa_M, BL_5dpa_N, BL_5dpa_O, BL_5dpa_P, BL_5dpa_Q), add.cell.ids = c("A", "B", "C", "D", "E", "F", "G", "H", "I1", "I2", "J1", "J2", "K", "L1", "L2", "M", "N", "O", "P", "Q"), project = "Limb_BL_5dpa")
+#BL_5dpa = merge(BL_5dpa_M, y = c(BL_5dpa_N, BL_5dpa_O, BL_5dpa_P, BL_5dpa_Q), add.cell.ids = c("M", "N", "O", "P", "Q"), project = "Limb_BL_5dpa")
 
 mito.genes <- c("ND2","ND1","ND3","ND4","ND4L","ND5","ND6")
 mito.contig <- intersect(c(rownames(anno)[anno$V2 %in% mito.genes ] , rownames(anno)[anno$V2 %in% anno$V2[grep("^COX",anno$V2)]] ) , rownames(BL_5dpa))
@@ -166,7 +149,7 @@ BL_5dpa[["percent.mt"]] <- PercentageFeatureSet(BL_5dpa, features = mito.contig)
 
 #parallize scaling
 library(future)
-plan("multiprocess", workers = 64)
+plan("multiprocess", workers = 50)
 plan()
 
 #set maximum to 50GB for each worker
@@ -195,6 +178,7 @@ VlnPlot(BL_5dpa, features = c("nCount_RNA","nFeature_RNA","percent.mt"),pt.size 
 CombinePlots(plots = list(plot1, plot2))
 dev.off()
 
+
 #get cell cycle genes
 
 g2m.genes <- cc.genes$g2m.genes
@@ -205,6 +189,7 @@ s.contig <- intersect(rownames(anno)[anno$V2 %in% s.genes ] , rownames(BL_5dpa) 
 
 #cell cycle scoring
 BL_5dpa <- CellCycleScoring(BL_5dpa, s.features = s.contig, g2m.features = g2m.contig, set.ident = TRUE)
+
 
 #scale
 #ScaleData(  object,  features = NULL,  assay = NULL,  vars.to.regress = NULL,  split.by = NULL,  model.use = "linear",  use.umi = FALSE,  do.scale = TRUE,  do.center = TRUE,  scale.max = 10,  block.size = 1000,  min.cells.to.block = 3000,  verbose = TRUE)
@@ -265,6 +250,7 @@ FeaturePlot(BL_5dpa, reduction = 'umap', pt.size = 0.5, features = c("nFeature_R
 FeaturePlot(BL_5dpa, reduction = 'tsne', pt.size = 0.5, features = c("nFeature_RNA","nCount_RNA","percent.mt","mCherry","eGFP"),order = T, cols = c(brewer.pal(9,"Greys")[9:2],brewer.pal(9,"Reds")[2:9]))
 dev.off()
 
+
 plan("multiprocess", workers = 6)
 library(tidyverse)
 
@@ -280,7 +266,9 @@ write.csv(markers.anno,"BL_5dpa_allMarker.csv")
 
 saveRDS(BL_5dpa, file = "BL_5dpa_SeuratObj.RDS")
 
+
 #plot some canonical markers to roughly identfy cell types
+
 
 gene_ids = c("AMEX60DD027986","AMEX60DD056342","AMEX60DD045921","AMEX60DD035908","AMEX60DD022398","AMEX60DD018450","AMEX60DD020580","AMEX60DD024035","AMEX60DD006619","AMEX60DD013910","AMEX60DD042097","AMEX60DD043936","AMEX60DD025155","AMEX60DD052070","AMEX60DD031414","AMEX60DD025537","AMEX60DD032898")
 
@@ -293,23 +281,21 @@ pdf("BL_5dpa_UMAP_feature_ClustMarker.pdf",width=14,height=10)
 CombinePlots( gg_Fig )
 dev.off()
 
-```
-
-MYLPF	AMEX60DD027986		Muscle
-DES	AMEX60DD056342		Muscle
-S100P	AMEX60DD045921		Epidermis
-EPCAM	AMEX60DD035908		Epidermis
-COL1A2	AMEX60DD022398		CT
-PRRX1	AMEX60DD018450		CT
-PHOSPHO1	AMEX60DD009968		Bone
-MYH11	AMEX60DD020580		Pericyte
-GP9	AMEX60DD024035		Pericyte
-VWF	AMEX60DD006619		Endothel
-PLVAP	AMEX60DD013910		Endothel
-GZMA	AMEX60DD042097		Immune
-PAX5	AMEX60DD043936		Immune
-CTSW	AMEX60DD025155    Immune
-C1QB	AMEX60DD052070		Macrophage
-LGALS3BP	AMEX60DD031414		Macrophage
-ALAS2	AMEX60DD025537		Red blood cell
-RHAG	AMEX60DD032898		Red blood cell
+# MYLPF	AMEX60DD027986		Muscle
+# DES	AMEX60DD056342		Muscle
+# S100P	AMEX60DD045921		Epidermis
+# EPCAM	AMEX60DD035908		Epidermis
+# COL1A2	AMEX60DD022398		CT
+# PRRX1	AMEX60DD018450		CT
+# PHOSPHO1	AMEX60DD009968		Bone
+# MYH11	AMEX60DD020580		Pericyte
+# GP9	AMEX60DD024035		Pericyte
+# VWF	AMEX60DD006619		Endothel
+# PLVAP	AMEX60DD013910		Endothel
+# GZMA	AMEX60DD042097		Immune
+# PAX5	AMEX60DD043936		Immune
+# CTSW	AMEX60DD025155    Immune
+# C1QB	AMEX60DD052070		Macrophage
+# LGALS3BP	AMEX60DD031414		Macrophage
+# ALAS2	AMEX60DD025537		Red blood cell
+# RHAG	AMEX60DD032898		Red blood cell
