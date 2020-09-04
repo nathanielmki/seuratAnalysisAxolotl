@@ -162,7 +162,7 @@ plot1 <- FeatureScatter(BL_dpa, feature1 = "nCount_RNA", feature2 = "percent.mt"
 plot2 <- FeatureScatter(BL_dpa, feature1 = "nCount_RNA", feature2 = "nFeature_RNA")
 
 
-pdf("./dpa11_FACSn_GER047C_PreFilter.pdf",width=10,height=5)
+pdf("./BL_dpa_QC_PreFilter.pdf",width=10,height=5)
 VlnPlot(BL_dpa, features = c("nCount_RNA","nFeature_RNA","percent.mt"),pt.size = -1)
 CombinePlots(plots = list(plot1, plot2))
 dev.off()
@@ -172,7 +172,7 @@ BL_dpa <- subset(BL_dpa, subset = nCount_RNA < 20000  & nCount_RNA > 500  & perc
 plot1 <- FeatureScatter(BL_dpa, feature1 = "nCount_RNA", feature2 = "percent.mt")
 plot2 <- FeatureScatter(BL_dpa, feature1 = "nCount_RNA", feature2 = "nFeature_RNA")
 
-pdf("./dpa11_FACSn_GER047C_PostFilter.pdf",width=10,height=5)
+pdf("./BL_dpa_QC_PostFilter.pdf",width=10,height=5)
 VlnPlot(BL_dpa, features = c("nCount_RNA","nFeature_RNA","percent.mt"),pt.size = -1)
 CombinePlots(plots = list(plot1, plot2))
 dev.off()
@@ -207,7 +207,7 @@ BL_dpa = RunPCA(BL_dpa,features = all.genes,npcs = 100)
 
 library(RColorBrewer)
 
-pdf("dpa11_FACSy_GER046CAheatmaps.pdf",width=30,height=20)
+pdf("BL_dpa_PCAheatmaps.pdf",width=30,height=20)
 DimHeatmap(BL_dpa, dims = 1:16, cells = 1000, balanced = TRUE, ncol = 4,  fast = F) 
 DimHeatmap(BL_dpa, dims = 17:32, cells = 1000, balanced = TRUE, ncol = 4,  fast = F) 
 DimHeatmap(BL_dpa, dims = 33:48, cells = 1000, balanced = TRUE,  ncol = 4, fast = F) 
@@ -217,7 +217,7 @@ DimHeatmap(BL_dpa, dims = 81:96, cells = 1000, balanced = TRUE,  ncol = 4, fast 
 dev.off()
 
 #elbow plot
-pdf("dpa11_FACSy_GER046Celbow.pdf",width=20,height=10)
+pdf("BL_dpa_PCelbow.pdf",width=20,height=10)
 ElbowPlot(BL_dpa, ndims = 100)
 dev.off()
 
@@ -236,7 +236,7 @@ BL_dpa = RunTSNE(BL_dpa,dims = 1:30)
 #plot result
 #DimPlot(object, dims = c(1, 2), cells = NULL, cols = NULL,  pt.size = NULL, reduction = NULL, group.by = NULL,  split.by = NULL, shape.by = NULL, order = NULL, label = FALSE,  label.size = 4, repel = FALSE, cells.highlight = NULL,  cols.highlight = "red", sizes.highlight = 1, na.value = "grey50",  combine = TRUE)
 
-pdf("dpa00_FACSy_GER014mbedding_PC30_res0.5.pdf",width=10,height=10)
+pdf("BL_dpa_Embedding_PC30_res0.5.pdf",width=10,height=10)
 DimPlot(object = BL_dpa, reduction = 'umap', pt.size = 2)
 DimPlot(object = BL_dpa, reduction = 'umap', pt.size = 2,group.by = "orig.ident")
 DimPlot(object = BL_dpa, reduction = 'tsne', pt.size = 2)
@@ -244,7 +244,7 @@ dev.off()
 
 #some QC features
 
-pdf("dpa00_FACSy_GER015eature.pdf",width=8,height=10)
+pdf("BL_dpa_feature.pdf",width=8,height=10)
 FeaturePlot(BL_dpa, reduction = 'umap', pt.size = 0.5, features = c("nFeature_RNA","nCount_RNA","percent.mt","mCherry","eGFP"),order = T, cols = c(brewer.pal(9,"Greys")[9:2],brewer.pal(9,"Reds")[2:9]))
 FeaturePlot(BL_dpa, reduction = 'tsne', pt.size = 0.5, features = c("nFeature_RNA","nCount_RNA","percent.mt","mCherry","eGFP"),order = T, cols = c(brewer.pal(9,"Greys")[9:2],brewer.pal(9,"Reds")[2:9]))
 dev.off()
@@ -261,7 +261,7 @@ markers.anno$ID = markers.anno$gene
 #markers.anno = markers.anno[order(as.numeric(markers.anno$cluster)),]
 markers.anno = markers.anno  %>% arrange(cluster , desc(avg_logFC))
 
-write.csv(markers.anno,"dpa18_FACSy_GER004llMarker.csv")
+write.csv(markers.anno,"BL_dpa_allMarker.csv")
 
 saveRDS(BL_dpa, file = "BL_dpa_SeuratObj.RDS")
 
