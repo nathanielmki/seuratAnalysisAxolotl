@@ -51,26 +51,26 @@ dpa18_FACSy_GER017 = dpa18_FACSy_GER017[rownames(anno), ,drop = FALSE]
 dpa18_FACSy_GER018 <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER018/GER018_11dpa_limbBL_L002_Solo.out/Gene/raw/")
 dpa18_FACSy_GER018 = dpa18_FACSy_GER018[rownames(anno), ,drop = FALSE]
 
-dpa25_FACSy_GER019_l1 <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER019/GER019_11dpa_limbBL_L001_Solo.out/Gene/raw/")
-dpa25_FACSy_GER019_l1 = dpa25_FACSy_GER019_l1[rownames(anno), ,drop = FALSE]
+dpa25_FACSy_GER019 <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER019/GER019_11dpa_limbBL_L012_Solo.out/Gene/raw/")
+dpa25_FACSy_GER019 = dpa25_FACSy_GER019[rownames(anno), ,drop = FALSE]
 
-dpa25_FACSy_GER019_l2 <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER019/GER019_11dpa_limbBL_L002_Solo.out/Gene/raw/")
-dpa25_FACSy_GER019_l2 = dpa25_FACSy_GER019_l2[rownames(anno), ,drop = FALSE]
+#dpa25_FACSy_GER019_l2 <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER019/GER019_11dpa_limbBL_L002_Solo.out/Gene/raw/")
+#dpa25_FACSy_GER019_l2 = dpa25_FACSy_GER019_l2[rownames(anno), ,drop = FALSE]
 
-dpa25_FACSy_GER020_l1 <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER020/GER020_11dpa_limbBL_L001_Solo.out/Gene/raw/")
-dpa25_FACSy_GER020_l1 = dpa25_FACSy_GER020_l1[rownames(anno), ,drop = FALSE]
+dpa25_FACSy_GER020 <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER020/GER020_11dpa_limbBL_L012_Solo.out/Gene/raw/")
+dpa25_FACSy_GER020 = dpa25_FACSy_GER020[rownames(anno), ,drop = FALSE]
 
-dpa25_FACSy_GER020_l2 <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER020/GER020_11dpa_limbBL_L002_Solo.out/Gene/raw/")
-dpa25_FACSy_GER020_l2 = dpa25_FACSy_GER020_l2[rownames(anno), ,drop = FALSE]
+#dpa25_FACSy_GER020_l2 <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER020/GER020_11dpa_limbBL_L002_Solo.out/Gene/raw/")
+#dpa25_FACSy_GER020_l2 = dpa25_FACSy_GER020_l2[rownames(anno), ,drop = FALSE]
 
 dpa38_FACSy_GER024 <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER024/GER024_11dpa_limbBL_L001_Solo.out/Gene/raw/")
 dpa38_FACSy_GER024 = dpa38_FACSy_GER024[rownames(anno), ,drop = FALSE]
 
-dpa38_FACSy_GER025_l1 <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER025/GER025_11dpa_limbBL_L001_Solo.out/Gene/raw/")
-dpa38_FACSy_GER025_l1 = dpa38_FACSy_GER025_l1[rownames(anno), ,drop = FALSE]
+dpa38_FACSy_GER025 <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER025/GER025_11dpa_limbBL_L012_Solo.out/Gene/raw/")
+dpa38_FACSy_GER025 = dpa38_FACSy_GER025[rownames(anno), ,drop = FALSE]
 
-dpa38_FACSy_GER025_l2 <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER025/GER025_11dpa_limbBL_L002_Solo.out/Gene/raw/")
-dpa38_FACSy_GER025_l2 = dpa38_FACSy_GER025_l2[rownames(anno), ,drop = FALSE]
+#dpa38_FACSy_GER025_l2 <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER025/GER025_11dpa_limbBL_L002_Solo.out/Gene/raw/")
+#dpa38_FACSy_GER025_l2 = dpa38_FACSy_GER025_l2[rownames(anno), ,drop = FALSE]
 
 dpa05_FACSn_GER043 <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER043/GER043_11dpa_limbBL_Solo.out/Gene/raw/")
 dpa05_FACSn_GER043 = dpa05_FACSn_GER043[rownames(anno), ,drop = FALSE]
@@ -108,20 +108,20 @@ dpa18_FACSy_GER017 <- CreateSeuratObject(counts = dpa18_FACSy_GER017, project = 
 dpa18_FACSy_GER017
 dpa18_FACSy_GER018 <- CreateSeuratObject(counts = dpa18_FACSy_GER018, project = "dpa18_FACSy_GER018", min.cells = 3, min.features = 200)
 dpa18_FACSy_GER018
-dpa25_FACSy_GER019_l1 <- CreateSeuratObject(counts = dpa25_FACSy_GER019_l1, project = "dpa25_FACSy_GER019_l1", min.cells = 3, min.features = 200)
-dpa25_FACSy_GER019_l1
-dpa25_FACSy_GER019_l2 <- CreateSeuratObject(counts = dpa25_FACSy_GER019_l2, project = "dpa25_FACSy_GER019_l2", min.cells = 3, min.features = 200)
-dpa25_FACSy_GER019_l2
-dpa25_FACSy_GER020_l1 <- CreateSeuratObject(counts = dpa25_FACSy_GER020_l1, project = "dpa25_FACSy_GER020_l1", min.cells = 3, min.features = 200)
-dpa25_FACSy_GER020_l1
-dpa25_FACSy_GER020_l2 <- CreateSeuratObject(counts = dpa25_FACSy_GER020_l2, project = "dpa25_FACSy_GER020_l2", min.cells = 3, min.features = 200)
-dpa25_FACSy_GER020_l2
+dpa25_FACSy_GER019 <- CreateSeuratObject(counts = dpa25_FACSy_GER019, project = "dpa25_FACSy_GER019", min.cells = 3, min.features = 200)
+dpa25_FACSy_GER019
+#dpa25_FACSy_GER019_l2 <- CreateSeuratObject(counts = dpa25_FACSy_GER019_l2, project = "dpa25_FACSy_GER019_l2", min.cells = 3, min.features = 200)
+#dpa25_FACSy_GER019_l2
+dpa25_FACSy_GER020 <- CreateSeuratObject(counts = dpa25_FACSy_GER020, project = "dpa25_FACSy_GER020", min.cells = 3, min.features = 200)
+dpa25_FACSy_GER020
+#dpa25_FACSy_GER020_l2 <- CreateSeuratObject(counts = dpa25_FACSy_GER020_l2, project = "dpa25_FACSy_GER020_l2", min.cells = 3, min.features = 200)
+#da25_FACSy_GER020_l2
 dpa38_FACSy_GER024 <- CreateSeuratObject(counts = dpa38_FACSy_GER024, project = "dpa38_FACSy_GER024", min.cells = 3, min.features = 200)
 dpa38_FACSy_GER024
-dpa38_FACSy_GER025_l1 <- CreateSeuratObject(counts = dpa38_FACSy_GER025_l1, project = "dpa38_FACSy_GER025_l1", min.cells = 3, min.features = 200)
-dpa38_FACSy_GER025_l1
-dpa38_FACSy_GER025_l2 <- CreateSeuratObject(counts = dpa38_FACSy_GER025_l2, project = "dpa38_FACSy_GER025_l2", min.cells = 3, min.features = 200)
-dpa38_FACSy_GER025_l2
+dpa38_FACSy_GER025 <- CreateSeuratObject(counts = dpa38_FACSy_GER025, project = "dpa38_FACSy_GER025", min.cells = 3, min.features = 200)
+dpa38_FACSy_GER025
+#dpa38_FACSy_GER025_l2 <- CreateSeuratObject(counts = dpa38_FACSy_GER025_l2, project = "dpa38_FACSy_GER025_l2", min.cells = 3, min.features = 200)
+#dpa38_FACSy_GER025_l2
 dpa05_FACSn_GER043 <- CreateSeuratObject(counts = dpa05_FACSn_GER043, project = "dpa05_FACSn_GER043", min.cells = 3, min.features = 200)
 dpa05_FACSn_GER043
 dpa05_FACSy_GER044 <- CreateSeuratObject(counts = dpa05_FACSy_GER044, project = "dpa05_FACSy_GER044", min.cells = 3, min.features = 200)
@@ -137,7 +137,7 @@ dpa11_FACSn_GER047
 #merge ojects
 #merge(x = NULL, y = NULL, add.cell.ids = NULL, merge.data = TRUE, project = "SeuratProject", ...)
 
-BL_dpa = merge(dpa18_FACSy_GER004, y = c(dpa18_FACSy_GER005, dpa00_FACSn_GER006, dpa00_FACSn_GER007, dpa00_FACSy_GER014, dpa00_FACSy_GER015, dpa18_FACSy_GER017, dpa18_FACSy_GER018, dpa25_FACSy_GER019_l1, dpa25_FACSy_GER019_l2, dpa25_FACSy_GER020_l1, dpa25_FACSy_GER020_l2, dpa38_FACSy_GER024, dpa38_FACSy_GER025_l1, dpa38_FACSy_GER025_l2, dpa05_FACSn_GER043, dpa05_FACSy_GER044, dpa05_FACSn_GER045, dpa11_FACSy_GER046, dpa11_FACSn_GER047), add.cell.ids = c("GER004", "GER005", "GER006", "GER007", "GER014", "GER015", "GER017", "GER018", "GER019_l1", "GER019_l2", "GER020_l1", "GER020_l2", "GER024", "GER025_l1", "GER025_l2", "GER043", "GER044", "GER045", "GER046", "GER047"), project = "Limb_BL_dpa")
+BL_dpa = merge(dpa18_FACSy_GER004, y = c(dpa18_FACSy_GER005, dpa00_FACSn_GER006, dpa00_FACSn_GER007, dpa00_FACSy_GER014, dpa00_FACSy_GER015, dpa18_FACSy_GER017, dpa18_FACSy_GER018, dpa25_FACSy_GER019, dpa25_FACSy_GER020, dpa38_FACSy_GER024, dpa38_FACSy_GER025, dpa05_FACSn_GER043, dpa05_FACSy_GER044, dpa05_FACSn_GER045, dpa11_FACSy_GER046, dpa11_FACSn_GER047), add.cell.ids = c("GER004", "GER005", "GER006", "GER007", "GER014", "GER015", "GER017", "GER018", "GER019", "GER020", "GER024", "GER025", "GER043", "GER044", "GER045", "GER046", "GER047"), project = "Limb_BL_dpa")
 
 mito.genes <- c("ND2","ND1","ND3","ND4","ND4L","ND5","ND6")
 mito.contig <- intersect(c(rownames(anno)[anno$V2 %in% mito.genes ] , rownames(anno)[anno$V2 %in% anno$V2[grep("^COX",anno$V2)]] ) , rownames(BL_dpa))
