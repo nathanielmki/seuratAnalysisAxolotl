@@ -38,6 +38,7 @@ dpa11_FACSn_GER047 = dpa11_FACSn_GER047[rownames(anno), ,drop = FALSE]
 
 library(dplyr)
 library(Seurat)
+#library(harmony)
 
 #load in Seurat
 
@@ -146,6 +147,15 @@ BL_dpa05.11 = RunUMAP(BL_dpa05.11,dims = 1:30)
 
 #run tSNE
 BL_dpa05.11 = RunTSNE(BL_dpa05.11,dims = 1:30)
+
+#Subset Clusters
+#Subset on 5,17
+
+Cluster.5 <- subset(x = BL_dpa05.11_SeuratObj, subset = cluster == "5")
+
+#run Harmony
+#BL_dpa05.11 <- RunHarmony(BL_dpa05.11_SeuratObj, "dataset")
+#BL_dpa05.11 <- RunUMAP(BL_dpa05.11_SeuratObj, reduction = "harmony", dims = 1:30)
 
 
 #plot result
