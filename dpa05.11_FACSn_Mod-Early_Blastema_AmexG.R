@@ -148,36 +148,6 @@ BL_dpa05.11 = RunUMAP(BL_dpa05.11,dims = 1:30)
 #run tSNE
 BL_dpa05.11 = RunTSNE(BL_dpa05.11,dims = 1:30)
 
-#Subset Clusters
-#Subset on 5,17
-Cluster.5 <- subset(x = BL_dpa05.11_SeuratObj, subset = cluster == "5")
-
-#run UMAP on subset (Cluster.5)
-Cluster.5 = RunUMAP(Cluster.5,dims = 1:30)
-
-#run TSNE on subset (Cluster.5)
-Cluster.5 = RunTSNE(Cluster.5,dims = 1:30)
-
-pdf("Cluster.5_feature.pdf",width=8,height=10)
-FeaturePlot(Cluster.5, reduction = 'umap', pt.size = 0.5, features = c("nFeature_RNA","nCount_RNA","percent.mt","mCherry","eGFP"),order = T, cols = c(brewer.pal(9,"Greys")[9:2],brewer.pal(9,"Reds")[2:9]))
-FeaturePlot(Cluster.5, reduction = 'tsne', pt.size = 0.5, features = c("nFeature_RNA","nCount_RNA","percent.mt","mCherry","eGFP"),order = T, cols = c(brewer.pal(9,"Greys")[9:2],brewer.pal(9,"Reds")[2:9]))
-dev.off()
-
-Cluster.5.markers <- FindAllMarkers(Cluster.5, only.pos = TRUE,  logfc.threshold = 0.3)
-Cluster.5.anno = Cluster.5
-Cluster.5.anno = merge(Cluster.5.anno,anno, by.x="gene" , by.y="V1")
-Cluster.5.anno$ID = Cluster.5.anno$gene
-
-#markers.anno = markers.anno[order(as.numeric(markers.anno$cluster)),]
-Cluster.5.anno = Cluster.5.anno  %>% arrange(cluster , desc(avg_logFC))
-
-write.csv(Cluster.5.anno,"Cluster.5_allMarker.csv")
-
-#run Harmony
-#BL_dpa05.11 <- RunHarmony(BL_dpa05.11_SeuratObj, "dataset")
-#BL_dpa05.11 <- RunUMAP(BL_dpa05.11_SeuratObj, reduction = "harmony", dims = 1:30)
-
-
 #plot result
 #DimPlot(object, dims = c(1, 2), cells = NULL, cols = NULL,  pt.size = NULL, reduction = NULL, group.by = NULL,  split.by = NULL, shape.by = NULL, order = NULL, label = FALSE,  label.size = 4, repel = FALSE, cells.highlight = NULL,  cols.highlight = "red", sizes.highlight = 1, na.value = "grey50",  combine = TRUE)
 
@@ -223,6 +193,36 @@ gg_Fig <- lapply( 1:length(gene_ids), function(x) { gg_Fig[[x]] + labs(title=gen
 pdf("BL_dpa05.11_UMAP_feature_ClustMarker.pdf",width=14,height=10)
 CombinePlots( gg_Fig )
 dev.off()
+
+#Subset Clusters
+#Subset on 5,17
+Cluster.5 <- subset(x = BL_dpa05.11_SeuratObj, subset = cluster == "5")
+
+#run UMAP on subset (Cluster.5)
+Cluster.5 = RunUMAP(Cluster.5,dims = 1:30)
+
+#run TSNE on subset (Cluster.5)
+Cluster.5 = RunTSNE(Cluster.5,dims = 1:30)
+
+pdf("Cluster.5_feature.pdf",width=8,height=10)
+FeaturePlot(Cluster.5, reduction = 'umap', pt.size = 0.5, features = c("nFeature_RNA","nCount_RNA","percent.mt","mCherry","eGFP"),order = T, cols = c(brewer.pal(9,"Greys")[9:2],brewer.pal(9,"Reds")[2:9]))
+FeaturePlot(Cluster.5, reduction = 'tsne', pt.size = 0.5, features = c("nFeature_RNA","nCount_RNA","percent.mt","mCherry","eGFP"),order = T, cols = c(brewer.pal(9,"Greys")[9:2],brewer.pal(9,"Reds")[2:9]))
+dev.off()
+
+Cluster.5.markers <- FindAllMarkers(Cluster.5, only.pos = TRUE,  logfc.threshold = 0.3)
+Cluster.5.anno = Cluster.5
+Cluster.5.anno = merge(Cluster.5.anno,anno, by.x="gene" , by.y="V1")
+Cluster.5.anno$ID = Cluster.5.anno$gene
+
+#markers.anno = markers.anno[order(as.numeric(markers.anno$cluster)),]
+Cluster.5.anno = Cluster.5.anno  %>% arrange(cluster , desc(avg_logFC))
+
+write.csv(Cluster.5.anno,"Cluster.5_allMarker.csv")
+
+#run Harmony
+#BL_dpa05.11 <- RunHarmony(BL_dpa05.11_SeuratObj, "dataset")
+#BL_dpa05.11 <- RunUMAP(BL_dpa05.11_SeuratObj, reduction = "harmony", dims = 1:30)
+
 
 # MYLPF	AMEX60DD027986		Muscle
 # DES	AMEX60DD056342		Muscle
