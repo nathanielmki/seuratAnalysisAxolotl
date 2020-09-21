@@ -196,28 +196,46 @@ dev.off()
 
 #Subset Clusters
 #Subset on 5,17
-Cluster.5 <- subset(x = BL_dpa05.11_SeuratObj, subset = cluster == "5")
+#Cluster.5 <- subset(x = BL_dpa05.11, subset = cluster == 5)
+
+#Cluster.5 <- FindNeighbors(Cluster.5, dims = 1:15)
+#Cluster.5 <- FindClusters(Cluster.5)
 
 #run UMAP on subset (Cluster.5)
-Cluster.5 = RunUMAP(Cluster.5,dims = 1:30)
+#Cluster.5 = RunUMAP(Cluster.5,dims = 1:15)
 
 #run TSNE on subset (Cluster.5)
-Cluster.5 = RunTSNE(Cluster.5,dims = 1:30)
+#Cluster.5 = RunTSNE(Cluster.5,dims = 1:15)
 
-pdf("Cluster.5_feature.pdf",width=8,height=10)
-FeaturePlot(Cluster.5, reduction = 'umap', pt.size = 0.5, features = c("nFeature_RNA","nCount_RNA","percent.mt","mCherry","eGFP"),order = T, cols = c(brewer.pal(9,"Greys")[9:2],brewer.pal(9,"Reds")[2:9]))
-FeaturePlot(Cluster.5, reduction = 'tsne', pt.size = 0.5, features = c("nFeature_RNA","nCount_RNA","percent.mt","mCherry","eGFP"),order = T, cols = c(brewer.pal(9,"Greys")[9:2],brewer.pal(9,"Reds")[2:9]))
-dev.off()
+#pdf("Cluster.5_feature.pdf",width=8,height=10)
+#FeaturePlot(Cluster.5, reduction = 'umap', pt.size = 0.5, features = c("nFeature_RNA","nCount_RNA","percent.mt","mCherry","eGFP"),order = T, cols = c(brewer.pal(9,"Greys")[9:2],brewer.pal(9,"Reds")[2:9]))
+#FeaturePlot(Cluster.5, reduction = 'tsne', pt.size = 0.5, features = c("nFeature_RNA","nCount_RNA","percent.mt","mCherry","eGFP"),order = T, cols = c(brewer.pal(9,"Greys")[9:2],brewer.pal(9,"Reds")[2:9]))
+#dev.off()
 
-Cluster.5.markers <- FindAllMarkers(Cluster.5, only.pos = TRUE,  logfc.threshold = 0.3)
-Cluster.5.anno = Cluster.5
-Cluster.5.anno = merge(Cluster.5.anno,anno, by.x="gene" , by.y="V1")
-Cluster.5.anno$ID = Cluster.5.anno$gene
+#Cluster.5.markers <- FindAllMarkers(Cluster.5, only.pos = TRUE,  logfc.threshold = 0.3)
+#Cluster.5.anno = Cluster.5
+#Cluster.5.anno = merge(Cluster.5.anno,anno, by.x="gene" , by.y="V1")
+#Cluster.5.anno$ID = Cluster.5.anno$gene
 
 #markers.anno = markers.anno[order(as.numeric(markers.anno$cluster)),]
-Cluster.5.anno = Cluster.5.anno  %>% arrange(cluster , desc(avg_logFC))
+#Cluster.5.anno = Cluster.5.anno  %>% arrange(cluster , desc(avg_logFC))
 
-write.csv(Cluster.5.anno,"Cluster.5_allMarker.csv")
+#write.csv(Cluster.5.anno,"Cluster.5_allMarker.csv")
+
+#saveRDS(BL_dpa05.11, file = "Cluster.5.11_SeuratObj.RDS")
+
+#plot some canonical markers to roughly identfy cell types
+
+#gene_ids = c("AMEX60DD027986","AMEX60DD056342","AMEX60DD045921","AMEX60DD035908","AMEX60DD022398","AMEX60DD018450","AMEX60DD020580","AMEX60DD024035","AMEX60DD006619","AMEX60DD013910","AMEX60DD042097","AMEX60DD043936","AMEX60DD025155","AMEX60DD052070","AMEX60DD031414","AMEX60DD025537","AMEX60DD032898", "eGFP", "mCherry")
+
+#gene_names = c("MYLPF","DES","S100P","EPCAM","COL1A2","PRRX1","MYH11","GP9","VWF","PLVAP","GZMA","PAX5","CTSW","C1QB","LGALS3BP","ALAS2","RHAG", "eGFP", "mCherry")
+
+#gg_Fig <- FeaturePlot(Cluster.5, pt.size = 0.5, features = gene_ids,order = T, cols = brewer.pal(9,"Greys")[3:9], repel=T)
+#gg_Fig <- lapply( 1:length(gene_ids), function(x) { gg_Fig[[x]] + labs(title=gene_names[x]) })
+
+#pdf("Cluster.5_UMAP_feature_ClustMarker.pdf",width=14,height=10)
+#CombinePlots( gg_Fig )
+#dev.off()
 
 #run Harmony
 #BL_dpa05.11 <- RunHarmony(BL_dpa05.11_SeuratObj, "dataset")
