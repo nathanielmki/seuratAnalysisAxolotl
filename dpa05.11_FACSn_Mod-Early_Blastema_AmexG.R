@@ -203,6 +203,7 @@ dev.off()
 
 Connective_subset <- subset(BL_dpa05.11, idents = c(5, 17))
 Connective_subset <- ScaleData(Connective_subset, features = all.genes ,vars.to.regress = c("nCount_RNA","nFeature_RNA","percent.mt","S.Score", "G2M.Score","eGFP","mCherry"))
+Connective_subset <- FindVariableFeatures(Connective_subset, assay = "RNA", selection.method = "pca")
 Connective_subset <- RunPCA(Connective_subset)
 Connective_subset <- RunUMAP(Connective_subset, dims = 1:30)
 Connective_subset <- FindNeighbors(Connective_subset, dims = 1:30)
