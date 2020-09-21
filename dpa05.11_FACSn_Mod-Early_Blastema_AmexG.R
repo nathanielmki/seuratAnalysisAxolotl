@@ -196,10 +196,10 @@ dev.off()
 
 #load(BL_dpa05.11, file = "BL_dpa05.11_SeuratObj.RDS")
 
-current.cluster.ids <- c(0, 1, 2, 3, 4 ,5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20)
-new.cluster.ids <- c(0, 1, 2, 3, 4, 5, 6, "connective", 8, 9, 10, 11, 12, 13, 14, 15, 16, "connective", 18, 19, 20)
-BL_dpa05.11@ident <- plyr::mapvalues(BL_dpa05.11@ident, from current.cluster.ids, to = new.cluster.ids)
-TSNEPlot(BL_dpa05.11, do.label = T, pt.size = 0.5)
+#current.cluster.ids <- c(0, 1, 2, 3, 4 ,5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20)
+#new.cluster.ids <- c(0, 1, 2, 3, 4, 5, 6, "connective", 8, 9, 10, 11, 12, 13, 14, 15, 16, "connective", 18, 19, 20)
+#BL_dpa05.11@ident <- plyr::mapvalues(BL_dpa05.11@ident, from current.cluster.ids, to = new.cluster.ids)
+#TSNEPlot(BL_dpa05.11, do.label = T, pt.size = 0.5)
 
 Connective_subset <- subset(BL_dpa05.11, idents = c(5, 17))
 Connective_subset <- ScaleData(Connective_subset, features = all.genes ,vars.to.regress = c("nCount_RNA","nFeature_RNA","percent.mt","S.Score", "G2M.Score","eGFP","mCherry"))
