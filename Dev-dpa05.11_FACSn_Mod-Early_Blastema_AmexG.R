@@ -1,16 +1,16 @@
 # install IKAP prereq packages
-ok <- install.packages(c("dplyr", "reshape2", "PRROC", "WriteXLS", "rpart", "stringr", "rpart.plot", "devtools"))
-if (!all(ok))
-    stop("Failed to install:\n  ",
-         paste("a package", collapse="  \n  "))
+#ok <- install.packages(c("dplyr", "reshape2", "PRROC", "WriteXLS", "rpart", "stringr", "rpart.plot", "devtools"))
+#if (!all(ok))
+    #stop("Failed to install:\n  ",
+         #paste("a package", collapse="  \n  "))
 
 #Load libraries
 library(Seurat)
 library(dplyr)
 library(Matrix)
 library(RColorBrewer)
-library(devtools)
-devtools::install_github("NHLBI-BCB/IKAP")
+#library(devtools)
+#ßdevtools::install_github("NHLBI-BCB/IKAP")
 
 setwd("/compbio/analysis/PrayagMurawala/")
 # annotation file
@@ -232,7 +232,7 @@ pdf("Connective_subset_PCelbow.pdf",width=20,height=10)
 ElbowPlot(Connective_subset, ndims = 100)
 dev.off()
 
-Connective_subset <- IKAP(Connective_subset, out.dir = "./IKAP")
+#Connective_subset <- IKAP(Connective_subset, out.dir = "./IKAP")
 #Subset Clusters
 #Subset on 5,17
 #Connective_subset <- subset(x = BL_dpa05.11, subset = cluster == 5)
