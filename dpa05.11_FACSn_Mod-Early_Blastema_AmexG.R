@@ -194,7 +194,7 @@ pdf("BL_dpa05.11_UMAP_feature_ClustMarker.pdf",width=14,height=10)
 CombinePlots( gg_Fig )
 dev.off()
 
-load(BL_dpa05.11, file = "BL_dpa05.11_SeuratObj.RDS")
+#load(BL_dpa05.11, file = "BL_dpa05.11_SeuratObj.RDS")
 
 current.cluster.ids <- c(0, 1, 2, 3, 4 ,5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20)
 new.cluster.ids <- c(0, 1, 2, 3, 4, 5, 6, "connective", 8, 9, 10, 11, 12, 13, 14, 15, 16, "connective", 18, 19, 20)
@@ -212,6 +212,11 @@ pdf("Connective_subset_feature.pdf",width=8,height=10)
 FeaturePlot(Connective_subset, reduction = 'umap', pt.size = 0.5, features = c("nFeature_RNA","nCount_RNA","percent.mt","mCherry","eGFP"),order = T, cols = c(brewer.pal(9,"Greys")[9:2],brewer.pal(9,"Reds")[2:9]))
 FeaturePlot(Connective_subset, reduction = 'tsne', pt.size = 0.5, features = c("nFeature_RNA","nCount_RNA","percent.mt","mCherry","eGFP"),order = T, cols = c(brewer.pal(9,"Greys")[9:2],brewer.pal(9,"Reds")[2:9]))
 
+pdf("Connective_subset_Embedding_PC30_res0.5.pdf",width=10,height=10)
+DimPlot(object = Connective_subset, reduction = 'umap', pt.size = 2)
+DimPlot(object = Connective_subset, reduction = 'umap', pt.size = 2,group.by = "orig.ident")
+DimPlot(object = Connective_subset, reduction = 'tsne', pt.size = 2)
+dev.off()
 #Subset Clusters
 #Subset on 5,17
 #Connective_subset <- subset(x = BL_dpa05.11, subset = cluster == 5)
