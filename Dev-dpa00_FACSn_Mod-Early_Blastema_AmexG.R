@@ -27,39 +27,32 @@ anno = anno[!rownames(anno) %in% rp.genes_AmexG,]
 
 library(tidyverse)
 
-dpa05_FACSn_GER043 <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER043/GER043_11dpa_limbBL_Solo.out/Gene/raw/")
-dpa05_FACSn_GER043 = dpa05_FACSn_GER043[rownames(anno), ,drop = FALSE]
+dpa00_FACSn_GER006 <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER006/GER006_11dpa_limbBL_L001_Solo.out/Gene/raw/")
+dpa00_FACSn_GER006 = dpa00_FACSn_GER006[rownames(anno), ,drop = FALSE]
 
-dpa05_FACSn_GER045 <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER045/GER045_11dpa_limbBL_Solo.out/Gene/raw/")
-dpa05_FACSn_GER045 = dpa05_FACSn_GER045[rownames(anno), ,drop = FALSE]
-
-dpa11_FACSn_GER047 <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER047/GER047_11dpa_limbBL_Solo.out/Gene/raw/")
-dpa11_FACSn_GER047 = dpa11_FACSn_GER047[rownames(anno), ,drop = FALSE]
+dpa00_FACSn_GER007 <- Read10X(data.dir = "/compbio/analysis/PrayagMurawala/GER007/GER007_11dpa_limbBL_L002_Solo.out/Gene/raw/")
+dpa00_FACSn_GER007 = dpa00_FACSn_GER007[rownames(anno), ,drop = FALSE]
 
 library(dplyr)
 library(Seurat)
-#library(harmony)
 
 #load in Seurat
 
-dpa05_FACSn_GER043 <- CreateSeuratObject(counts = dpa05_FACSn_GER043, project = "dpa05_FACSn_GER043", min.cells = 3, min.features = 200)
-dpa05_FACSn_GER043
-dpa05_FACSn_GER045 <- CreateSeuratObject(counts = dpa05_FACSn_GER045, project = "dpa05_FACSn_GER045", min.cells = 3, min.features = 200)
-dpa05_FACSn_GER045
-dpa11_FACSn_GER047 <- CreateSeuratObject(counts = dpa11_FACSn_GER047, project = "dpa11_FACSn_GER047", min.cells = 3, min.features = 200)
-dpa11_FACSn_GER047
-
+dpa00_FACSn_GER006 <- CreateSeuratObject(counts = dpa00_FACSn_GER006, project = "dpa00_FACSn_GER006", min.cells = 3, min.features = 200)
+dpa00_FACSn_GER006
+dpa00_FACSn_GER007 <- CreateSeuratObject(counts = dpa00_FACSn_GER007, project = "dpa00_FACSn_GER007", min.cells = 3, min.features = 200)
+dpa00_FACSn_GER007
 
 #merge ojects
 #merge(x = NULL, y = NULL, add.cell.ids = NULL, merge.data = TRUE, project = "SeuratProject", ...)
 
-BL_dpa05.11 = merge(dpa05_FACSn_GER043, y = c(dpa05_FACSn_GER045, dpa11_FACSn_GER047), add.cell.ids = c("GER043", "GER045", "GER047"), project = "dpa05.11_Limb_BL")
+BL_dpa00 = merge(dpa00_FACSn_GER006, y = c(dpa00_FACSn_GER007), add.cell.ids = c("GER006", "GER007"), project = "dpa00_Limb_BL")
 
 mito.genes <- c("ND2","ND1","ND3","ND4","ND4L","ND5","ND6")
-mito.contig <- intersect(c(rownames(anno)[anno$V2 %in% mito.genes ] , rownames(anno)[anno$V2 %in% anno$V2[grep("^COX",anno$V2)]] ) , rownames(BL_dpa05.11))
+mito.contig <- intersect(c(rownames(anno)[anno$V2 %in% mito.genes ] , rownames(anno)[anno$V2 %in% anno$V2[grep("^COX",anno$V2)]] ) , rownames(BL_dpa00))
 
 
-BL_dpa05.11[["percent.mt"]] <- PercentageFeatureSet(BL_dpa05.11, features = mito.contig)
+BL_dpa00[["percent.mt"]] <- PercentageFeatureSet(BL_dpa00, features = mito.contig)
 
 
 #parallize scaling
@@ -72,24 +65,24 @@ options(future.globals.maxSize = 50000 * 1024^2)
 
 #normalize data
 
-BL_dpa05.11 = NormalizeData(BL_dpa05.11)
+BL_dpa00 = NormalizeData(BL_dpa00)
 
-plot1 <- FeatureScatter(BL_dpa05.11, feature1 = "nCount_RNA", feature2 = "percent.mt")
-plot2 <- FeatureScatter(BL_dpa05.11, feature1 = "nCount_RNA", feature2 = "nFeature_RNA")
+plot1 <- FeatureScatter(BL_dpa00, feature1 = "nCount_RNA", feature2 = "percent.mt")
+plot2 <- FeatureScatter(BL_dpa00, feature1 = "nCount_RNA", feature2 = "nFeature_RNA")
 
 
-pdf("./BL_dpa05.11_QC_PreFilter.pdf",width=10,height=5)
-VlnPlot(BL_dpa05.11, features = c("nCount_RNA","nFeature_RNA","percent.mt"),pt.size = -1)
+pdf("./BL_dpa00_QC_PreFilter.pdf",width=10,height=5)
+VlnPlot(BL_dpa00, features = c("nCount_RNA","nFeature_RNA","percent.mt"),pt.size = -1)
 CombinePlots(plots = list(plot1, plot2))
 dev.off()
 
-BL_dpa05.11 <- subset(BL_dpa05.11, subset = nCount_RNA < 20000  & nCount_RNA > 500  & percent.mt < 10 )
+BL_dpa00 <- subset(BL_dpa00, subset = nCount_RNA < 20000  & nCount_RNA > 500  & percent.mt < 10 )
 
-plot1 <- FeatureScatter(BL_dpa05.11, feature1 = "nCount_RNA", feature2 = "percent.mt")
-plot2 <- FeatureScatter(BL_dpa05.11, feature1 = "nCount_RNA", feature2 = "nFeature_RNA")
+plot1 <- FeatureScatter(BL_dpa00, feature1 = "nCount_RNA", feature2 = "percent.mt")
+plot2 <- FeatureScatter(BL_dpa00, feature1 = "nCount_RNA", feature2 = "nFeature_RNA")
 
-pdf("./BL_dpa05.11_QC_PostFilter.pdf",width=10,height=5)
-VlnPlot(BL_dpa05.11, features = c("nCount_RNA","nFeature_RNA","percent.mt"),pt.size = -1)
+pdf("./BL_dpa00_QC_PostFilter.pdf",width=10,height=5)
+VlnPlot(BL_dpa00, features = c("nCount_RNA","nFeature_RNA","percent.mt"),pt.size = -1)
 CombinePlots(plots = list(plot1, plot2))
 dev.off()
 
@@ -97,78 +90,79 @@ dev.off()
 #get cell cycle genes
 
 g2m.genes <- cc.genes$g2m.genes
-g2m.contig <- intersect(rownames(anno)[anno$V2 %in% g2m.genes ] , rownames(BL_dpa05.11) )
+g2m.contig <- intersect(rownames(anno)[anno$V2 %in% g2m.genes ] , rownames(BL_dpa00) )
 
 s.genes <- cc.genes$s.genes
-s.contig <- intersect(rownames(anno)[anno$V2 %in% s.genes ] , rownames(BL_dpa05.11) )
+s.contig <- intersect(rownames(anno)[anno$V2 %in% s.genes ] , rownames(BL_dpa00) )
 
 #cell cycle scoring
-BL_dpa05.11 <- CellCycleScoring(BL_dpa05.11, s.features = s.contig, g2m.features = g2m.contig, set.ident = TRUE)
+BL_dpa00 <- CellCycleScoring(BL_dpa00, s.features = s.contig, g2m.features = g2m.contig, set.ident = TRUE)
 
 
 #scale
 #ScaleData(  object,  features = NULL,  assay = NULL,  vars.to.regress = NULL,  split.by = NULL,  model.use = "linear",  use.umi = FALSE,  do.scale = TRUE,  do.center = TRUE,  scale.max = 10,  block.size = 1000,  min.cells.to.block = 3000,  verbose = TRUE)
 
-all.genes <- rownames(BL_dpa05.11)
+all.genes <- rownames(BL_dpa00)
 
-BL_dpa05.11 = ScaleData(  BL_dpa05.11, features = all.genes ,vars.to.regress = c("nCount_RNA","nFeature_RNA","percent.mt","S.Score", "G2M.Score","eGFP","mCherry"))
+BL_dpa00 = ScaleData(  BL_dpa00, features = all.genes ,vars.to.regress = c("nCount_RNA","nFeature_RNA","percent.mt","S.Score", "G2M.Score","eGFP","mCherry"))
 
 #run PCA on all genes
 #RunPCA(object, assay = NULL, features = NULL,  npcs = 50, rev.pca = FALSE, weight.by.var = TRUE, verbose = TRUE,  ndims.print = 1:5, nfeatures.print = 30, reduction.name = "pca",  reduction.key = "PC_", seed.use = 42)
 
-BL_dpa05.11 = RunPCA(BL_dpa05.11,features = all.genes,npcs = 100)
+BL_dpa00 = RunPCA(BL_dpa00,features = all.genes,npcs = 100)
 
 #plot PCA heatmaps
 #DimHeatmap(pbmc, dims = 1, cells = 500, balanced = TRUE)
 
 library(RColorBrewer)
 
-pdf("BL_dpa05.11_PCAheatmaps.pdf",width=30,height=20)
-DimHeatmap(BL_dpa05.11, dims = 1:16, cells = 1000, balanced = TRUE, ncol = 4,  fast = F) 
-DimHeatmap(BL_dpa05.11, dims = 17:32, cells = 1000, balanced = TRUE, ncol = 4,  fast = F) 
-DimHeatmap(BL_dpa05.11, dims = 33:48, cells = 1000, balanced = TRUE,  ncol = 4, fast = F) 
-DimHeatmap(BL_dpa05.11, dims = 49:64, cells = 1000, balanced = TRUE,  ncol = 4, fast = F) 
-DimHeatmap(BL_dpa05.11, dims = 65:80, cells = 1000, balanced = TRUE,  ncol = 4, fast = F) 
-DimHeatmap(BL_dpa05.11, dims = 81:96, cells = 1000, balanced = TRUE,  ncol = 4, fast = F) 
+pdf("BL_dpa00_PCAheatmaps.pdf",width=30,height=20)
+DimHeatmap(BL_dpa00, dims = 1:16, cells = 1000, balanced = TRUE, ncol = 4,  fast = F) 
+DimHeatmap(BL_dpa00, dims = 17:32, cells = 1000, balanced = TRUE, ncol = 4,  fast = F) 
+DimHeatmap(BL_dpa00, dims = 33:48, cells = 1000, balanced = TRUE,  ncol = 4, fast = F) 
+DimHeatmap(BL_dpa00, dims = 49:64, cells = 1000, balanced = TRUE,  ncol = 4, fast = F) 
+DimHeatmap(BL_dpa00, dims = 65:80, cells = 1000, balanced = TRUE,  ncol = 4, fast = F) 
+DimHeatmap(BL_dpa00, dims = 81:96, cells = 1000, balanced = TRUE,  ncol = 4, fast = F) 
 dev.off()
 
 #elbow plot
-pdf("BL_dpa05.11_PCelbow.pdf",width=20,height=10)
-ElbowPlot(BL_dpa05.11, ndims = 100)
+pdf("BL_dpa00_PCelbow.pdf",width=20,height=10)
+ElbowPlot(BL_dpa00, ndims = 100)
 dev.off()
 
 #Cluster cells
-BL_dpa05.11<- FindNeighbors(BL_dpa05.11, dims = 1:30)
-BL_dpa05.11 <- FindClusters(BL_dpa05.11, resolution = 0.5)
+BL_dpa00<- FindNeighbors(BL_dpa00, dims = 1:30)
+BL_dpa00 <- FindClusters(BL_dpa00, resolution = 0.5)
 
 #run UMAP
 #min.dist deafult is 0.3. Can go down to 0.001. Play around to modify clustering
-BL_dpa05.11 = RunUMAP(BL_dpa05.11,dims = 1:30)
+BL_dpa00 = RunUMAP(BL_dpa00,dims = 1:30)
 
 #run tSNE
-BL_dpa05.11 = RunTSNE(BL_dpa05.11,dims = 1:30)
+BL_dpa00 = RunTSNE(BL_dpa00,dims = 1:30)
+
 
 #plot result
 #DimPlot(object, dims = c(1, 2), cells = NULL, cols = NULL,  pt.size = NULL, reduction = NULL, group.by = NULL,  split.by = NULL, shape.by = NULL, order = NULL, label = FALSE,  label.size = 4, repel = FALSE, cells.highlight = NULL,  cols.highlight = "red", sizes.highlight = 1, na.value = "grey50",  combine = TRUE)
 
-pdf("BL_dpa05.11_Embedding_PC30_res0.5.pdf",width=10,height=10)
-DimPlot(object = BL_dpa05.11, reduction = 'umap', pt.size = 2)
-DimPlot(object = BL_dpa05.11, reduction = 'umap', pt.size = 2,group.by = "orig.ident")
-DimPlot(object = BL_dpa05.11, reduction = 'tsne', pt.size = 2)
+pdf("BL_dpa00_Embedding_PC30_res0.5.pdf",width=10,height=10)
+DimPlot(object = BL_dpa00, reduction = 'umap', pt.size = 2)
+DimPlot(object = BL_dpa00, reduction = 'umap', pt.size = 2,group.by = "orig.ident")
+DimPlot(object = BL_dpa00, reduction = 'tsne', pt.size = 2)
 dev.off()
 
 #some QC features
 
-pdf("BL_dpa05.11_feature.pdf",width=8,height=10)
-FeaturePlot(BL_dpa05.11, reduction = 'umap', pt.size = 0.5, features = c("nFeature_RNA","nCount_RNA","percent.mt","mCherry","eGFP"),order = T, cols = c(brewer.pal(9,"Greys")[9:2],brewer.pal(9,"Reds")[2:9]))
-FeaturePlot(BL_dpa05.11, reduction = 'tsne', pt.size = 0.5, features = c("nFeature_RNA","nCount_RNA","percent.mt","mCherry","eGFP"),order = T, cols = c(brewer.pal(9,"Greys")[9:2],brewer.pal(9,"Reds")[2:9]))
+pdf("BL_dpa00_feature.pdf",width=8,height=10)
+FeaturePlot(BL_dpa00, reduction = 'umap', pt.size = 0.5, features = c("nFeature_RNA","nCount_RNA","percent.mt","mCherry","eGFP"),order = T, cols = c(brewer.pal(9,"Greys")[9:2],brewer.pal(9,"Reds")[2:9]))
+FeaturePlot(BL_dpa00, reduction = 'tsne', pt.size = 0.5, features = c("nFeature_RNA","nCount_RNA","percent.mt","mCherry","eGFP"),order = T, cols = c(brewer.pal(9,"Greys")[9:2],brewer.pal(9,"Reds")[2:9]))
 dev.off()
 
 
 plan("multiprocess", workers = 6)
 library(tidyverse)
 
-markers <- FindAllMarkers(BL_dpa05.11, only.pos = TRUE,  logfc.threshold = 0.3)
+markers <- FindAllMarkers(BL_dpa00, only.pos = TRUE,  logfc.threshold = 0.3)
 markers.anno = markers
 markers.anno = merge(markers.anno,anno, by.x="gene" , by.y="V1")
 markers.anno$ID = markers.anno$gene
@@ -176,10 +170,9 @@ markers.anno$ID = markers.anno$gene
 #markers.anno = markers.anno[order(as.numeric(markers.anno$cluster)),]
 markers.anno = markers.anno  %>% arrange(cluster , desc(avg_logFC))
 
-write.csv(markers.anno,"BL_dpa05.11_allMarker.csv")
+write.csv(markers.anno,"BL_dpa00_allMarker.csv")
 
-save(BL_dpa05.11, file = "BL_dpa05.11_SeuratObj.RDS")
-
+saveRDS(BL_dpa00, file = "BL_dpa00_SeuratObj.RDS")
 
 #plot some canonical markers to roughly identfy cell types
 
@@ -187,21 +180,15 @@ gene_ids = c("AMEX60DD027986","AMEX60DD056342","AMEX60DD045921","AMEX60DD035908"
 
 gene_names = c("MYLPF","DES","S100P","EPCAM","COL1A2","PRRX1","MYH11","GP9","VWF","PLVAP","GZMA","PAX5","CTSW","C1QB","LGALS3BP","ALAS2","RHAG", "eGFP", "mCherry")
 
-gg_Fig <- FeaturePlot(BL_dpa05.11, pt.size = 0.5, features = gene_ids,order = T, cols = brewer.pal(9,"Greys")[3:9], repel=T)
+gg_Fig <- FeaturePlot(BL_dpa00, pt.size = 0.5, features = gene_ids,order = T, cols = brewer.pal(9,"Greys")[3:9], repel=T)
 gg_Fig <- lapply( 1:length(gene_ids), function(x) { gg_Fig[[x]] + labs(title=gene_names[x]) })
 
-pdf("BL_dpa05.11_UMAP_feature_ClustMarker.pdf",width=14,height=10)
+pdf("BL_dpa00_UMAP_feature_ClustMarker.pdf",width=14,height=10)
 CombinePlots( gg_Fig )
 dev.off()
 
-#load(BL_dpa05.11, file = "BL_dpa05.11_SeuratObj.RDS")
 
-#current.cluster.ids <- c(0, 1, 2, 3, 4 ,5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20)
-#new.cluster.ids <- c(0, 1, 2, 3, 4, 5, 6, "connective", 8, 9, 10, 11, 12, 13, 14, 15, 16, "connective", 18, 19, 20)
-#BL_dpa05.11@ident <- plyr::mapvalues(BL_dpa05.11@ident, from current.cluster.ids, to = new.cluster.ids)
-#TSNEPlot(BL_dpa05.11, do.label = T, pt.size = 0.5)
-
-Connective_subset <- subset(BL_dpa05.11, idents = c(5, 17))
+Connective_subset <- subset(BL_dpa00, idents = c(5, 17))
 Connective_subset <- ScaleData(Connective_subset, features = all.genes ,vars.to.regress = c("nCount_RNA","nFeature_RNA","percent.mt","S.Score", "G2M.Score","eGFP","mCherry"))
 Connective_subset <- FindVariableFeatures(Connective_subset, assay = "RNA", selection.method = "vst")
 Connective_subset <- RunPCA(Connective_subset)
