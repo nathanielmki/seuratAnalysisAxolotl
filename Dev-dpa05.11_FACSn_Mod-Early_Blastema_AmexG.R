@@ -216,7 +216,7 @@ VlnPlot(Cluster.5.17_subset, features = c("nCount_RNA","nFeature_RNA","percent.m
 CombinePlots(plots = list(plot1, plot2))
 dev.off()
 
-Cluster.5.17_subset <- subsetCluster.5.17_subset, subset = nCount_RNA < 20000  & nCount_RNA > 500  & percent.mt < 10 )
+Cluster.5.17_subset <- subset(Cluster.5.17_subset, subset = nCount_RNA < 20000  & nCount_RNA > 500  & percent.mt < 10 )
 
 plot1 <- FeatureScatter(Cluster.5.17_subset, feature1 = "nCount_RNA", feature2 = "percent.mt")
 plot2 <- FeatureScatter(Cluster.5.17_subset, feature1 = "nCount_RNA", feature2 = "nFeature_RNA")
