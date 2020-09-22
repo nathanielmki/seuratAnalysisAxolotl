@@ -272,15 +272,15 @@ dev.off()
 #FeaturePlot(Cluster.5.17_subset, reduction = 'tsne', pt.size = 0.5, features = c("nFeature_RNA","nCount_RNA","percent.mt","mCherry","eGFP"),order = T, cols = c(brewer.pal(9,"Greys")[9:2],brewer.pal(9,"Reds")[2:9]))
 #dev.off()
 
-Cluster.5.17_subset.markers <- FindAllMarkers(Cluster.5.17_subset, only.pos = TRUE,  logfc.threshold = 0.3)
-Cluster.5.17_subset.anno = Cluster.5.17_subset
-Cluster.5.17_subset.anno = merge(Cluster.5.17_subset.anno,anno, by.x="gene" , by.y="V1")
-Cluster.5.17_subset.anno$ID = Cluster.5.17_subset.anno$gene
+#Cluster.5.17_subset.markers <- FindAllMarkers(Cluster.5.17_subset, only.pos = TRUE,  logfc.threshold = 0.3)
+#Cluster.5.17_subset.anno = Cluster.5.17_subset
+#Cluster.5.17_subset.anno = merge(Cluster.5.17_subset.anno,anno, by.x="gene" , by.y="V1")
+#Cluster.5.17_subset.anno$ID = Cluster.5.17_subset.anno$gene
 
-markers.anno = markers.anno[order(as.numeric(markers.anno$cluster)),]
-Cluster.5.17_subset.anno = Cluster.5.17_subset.anno  %>% arrange(cluster , desc(avg_logFC))
+#markers.anno = markers.anno[order(as.numeric(markers.anno$cluster)),]
+#Cluster.5.17_subset.anno = Cluster.5.17_subset.anno  %>% arrange(cluster , desc(avg_logFC))
 
-write.csv(Cluster.5.17_subset.anno,"Cluster.5.17_subset_allMarker.csv")
+#write.csv(Cluster.5.17_subset.anno,"Cluster.5.17_subset_allMarker.csv")
 
 saveRDS(BL_dpa05.11, file = "Cluster.5.17_subset.11_SeuratObj.RDS")
 
