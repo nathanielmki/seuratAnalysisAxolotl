@@ -273,7 +273,7 @@ dev.off()
 
 Cluster.5.17_subset.markers <- FindAllMarkers(Cluster.5.17_subset, only.pos = TRUE,  logfc.threshold = 0.3)
 Cluster.5.17_subset.anno = Cluster.5.17_subset
-#Cluster.5.17_subset.anno = merge(Cluster.5.17_subset.anno,anno, by.x="gene" , by.y="V1")
+Cluster.5.17_subset.anno = merge(Cluster.5.17_subset.anno,anno, by.x="gene" , by.y="V1")
 Cluster.5.17_subset.anno$ID = Cluster.5.17_subset.anno$gene
 
 markers.anno = markers.anno[order(as.numeric(markers.anno$cluster)),]
