@@ -210,28 +210,22 @@ dev.off()
 #TSNEPlot(BL_dpa05.11, do.label = T, pt.size = 0.5)
 
 Connective_subset <- subset(BL_dpa05.11, idents = c(5, 17))
-Connective_subset <- ScaleData(Connective_subset, features = all.genes ,vars.to.regress = c("nCount_RNA","nFeature_RNA","percent.mt","S.Score", "G2M.Score","eGFP","mCherry"))
+#Connective_subset <- ScaleData(Connective_subset, features = all.genes ,vars.to.regress = c("nCount_RNA","nFeature_RNA","percent.mt","S.Score", "G2M.Score","eGFP","mCherry"))
 Connective_subset <- FindVariableFeatures(Connective_subset, assay = "RNA", selection.method = "vst")
 Connective_subset <- RunPCA(Connective_subset)
-Connective_subset <- RunUMAP(Connective_subset, dims = 1:15)
-Connective_subset <- RunTSNE(Connective_subset, dims = 1:15)
-Connective_subset <- FindNeighbors(Connective_subset, dims = 1:15)
+Connective_subset <- RunUMAP(Connective_subset, dims = 1:30)
+Connective_subset <- RunTSNE(Connective_subset, dims = 1:30)
+Connective_subset <- FindNeighbors(Connective_subset, dims = 1:30)
 Connective_subset <- FindClusters(Connective_subset, resolution = 0.8)
 
 pdf("Connective_subset_feature.pdf",width=8,height=10)
 FeaturePlot(Connective_subset, reduction = 'umap', pt.size = 0.5, features = c("nFeature_RNA","nCount_RNA","percent.mt","mCherry","eGFP"),order = T, cols = c(brewer.pal(9,"Greys")[9:2],brewer.pal(9,"Reds")[2:9]))
 FeaturePlot(Connective_subset, reduction = 'tsne', pt.size = 0.5, features = c("nFeature_RNA","nCount_RNA","percent.mt","mCherry","eGFP"),order = T, cols = c(brewer.pal(9,"Greys")[9:2],brewer.pal(9,"Reds")[2:9]))
 
-pdf("Connective_subset_Embedding_PC30_res0.5.pdf",width=10,height=10)
+pdf("Connective_subset_Embedding_PC30_res0.8.pdf",width=10,height=10)
 DimPlot(object = Connective_subset, reduction = 'umap', pt.size = 2)
 DimPlot(object = Connective_subset, reduction = 'umap', pt.size = 2,group.by = "orig.ident")
 DimPlot(object = Connective_subset, reduction = 'tsne', pt.size = 2)
-dev.off()
-
-#jack straw plot (additional visualization)
-pdf("Connective_subset_JackStraw.pdf")
-Connective_subset <- JackStraw(Connective_subset, num.replicate = 100)
-Connective_subset <- ScoreJackStraw(Connective_subset, dims = 1:15)
 dev.off()
 
 #elbow plot
