@@ -180,7 +180,7 @@ markers.anno = markers.anno  %>% arrange(cluster , desc(avg_logFC))
 
 write.csv(markers.anno,"BL_dpa05.11_allMarker.csv")
 
-save(BL_dpa05.11, file = "BL_dpa05.11_SeuratObj.RDS")
+saveRDS(BL_dpa05.11, file = "BL_dpa05.11_SeuratObj.RDS")
 
 
 #plot some canonical markers to roughly identfy cell types
@@ -282,7 +282,7 @@ dev.off()
 
 #write.csv(Cluster.5.17_subset.anno,"Cluster.5.17_subset_allMarker.csv")
 
-saveRDS(BL_dpa05.11, file = "Cluster.5.17_subset.11_SeuratObj.RDS")
+saveRDS(Cluster.5.17_subset, file = "Cluster.5.17_subset.11_SeuratObj.RDS")
 
 #plot some canonical markers to roughly identfy cell types
 
