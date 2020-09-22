@@ -220,9 +220,10 @@ VlnPlot(Cluster.5.17_subset, features = c("nCount_RNA","nFeature_RNA","percent.m
 CombinePlots(plots = list(plot1, plot2))
 dev.off()
 
+all.genes <- rownames(Cluster.5.17_subset)
 Cluster.5.17_subset <- ScaleData(Cluster.5.17_subset, features = all.genes ,vars.to.regress = c("nCount_RNA","nFeature_RNA","percent.mt","S.Score", "G2M.Score","eGFP","mCherry"))
 Cluster.5.17_subset <- FindVariableFeatures(Cluster.5.17_subset, assay = "RNA", selection.method = "vst")
-Cluster.5.17_subset <- RunPCA(Cluster.5.17_subset)
+Cluster.5.17_subset <- RunPCA(Cluster.5.17_subset, features = all.genes,npcs = 100)
 Cluster.5.17_subset <- RunUMAP(Cluster.5.17_subset, dims = 1:30)
 Cluster.5.17_subset <- RunTSNE(Cluster.5.17_subset, dims = 1:30)
 Cluster.5.17_subset <- FindNeighbors(Cluster.5.17_subset, dims = 1:30)
